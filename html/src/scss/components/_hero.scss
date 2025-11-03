@@ -1,0 +1,39 @@
+@use '../variables' as *;
+
+.hero {
+  &__grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: $space-l;
+    align-items: center;
+    @media (max-width: 880px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__kicker {
+    color: $muted;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-2;
+    font-size: $font-size-xs;
+    line-height: $line-height-baseline;
+  }
+
+  &__title {
+    margin: $space-2xs 0 $space-xs;
+  }
+
+  &__subtitle {
+    color: $muted;
+    font-size: clamp($font-size-m, 2.5vw, $font-size-l);
+    max-width: 60ch;
+    line-height: $line-height-2;
+  }
+
+  &__cta {
+    display: flex;
+    gap: $space-s;
+    flex-wrap: wrap;
+    margin-top: $space-s;
+  }
+}

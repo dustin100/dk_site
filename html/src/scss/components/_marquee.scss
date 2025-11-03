@@ -1,0 +1,58 @@
+@use '../variables' as *;
+
+.marquee {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  &__track {
+    display: flex;
+    align-items: center;
+    gap: $space-3xl;
+    animation: scroll 28s linear infinite;
+    width: max-content;
+  }
+}
+
+.work {
+  &__title {
+    margin-bottom: $space-s;
+    letter-spacing: $letter-spacing-1;
+    line-height: $line-height-0;
+  }
+  &__logos {
+    overflow: hidden;
+  }
+  &__strap {
+    text-align: center;
+    margin-top: $space-s;
+  }
+  &__strap--muted {
+    color: $muted;
+  }
+}
+
+#work img {
+  max-height: $space-3xl;
+  filter: grayscale(1) brightness(0.85);
+  opacity: 0.9;
+  transition: all 0.3s ease;
+  &:hover {
+    filter: none;
+    opacity: 1;
+  }
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pause on hover */
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
+}

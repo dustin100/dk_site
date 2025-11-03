@@ -1,0 +1,96 @@
+// Font-family
+$font-primary: 'Inter', Helvetica, Arial, sans-serif;
+$font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+// Font-size
+$font-size-2xs: 0.625rem; // 10px
+$font-size-xs: 0.75rem; // 12px
+$font-size-s: 0.875rem; // 14px
+$font-size-m: 1rem; // 16px
+$font-size-l: 1.125rem; // 18px
+$font-size-xl: 1.25rem; // 20px
+$font-size-2xl: 1.5rem; // 24px
+$font-size-3xl: 1.75rem; // 28px
+$font-size-4xl: 2.25rem; // 36px
+$font-size-5xl: 2.625rem; // 42px
+$font-size-6xl: 3rem; // 48px
+$font-size-7xl: 3.5rem; // 56px
+$font-size-8xl: 4rem; // 64px
+$font-size-9xl: 4.5rem; // 72px
+
+// Font-weight
+$font-weight-regular: 400;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
+$font-weight-extra-bold: 800;
+
+// Letter-spacing
+$letter-spacing-0: 0.5px;
+$letter-spacing-1: 0;
+$letter-spacing-2: 2px;
+$letter-spacing-3: 0%;
+$letter-spacing-4: 1px;
+
+// Line-height
+$line-height-0: 140%;
+$line-height-1: normal;
+$line-height-2: 150%;
+$line-height-3: 160%;
+$line-height-baseline: 100%;
+$line-height-block-text: 125%;
+
+// Icon
+$icon-2xs: 1rem; // 16px
+$icon-xs: 1.125rem; // 18px
+$icon-s: 1.25rem; // 20px
+$icon-m: 1.5rem; // 24px
+$icon-l: 2rem; // 32px
+
+// Layers
+$layer-base: 0;
+$layer-flat: 1;
+$layer-raised: 2;
+$layer-heightened: 4;
+$layer-sticky: 8;
+$layer-window-overlay: 12;
+$layer-overlay: 16;
+$layer-temporary: 20;
+
+// Scale
+$scale-base: 16px;
+
+// Text indent scale
+$text-indent-0: 0; // 0px
+
+// Spacing
+$space-4xs: 0.0625rem; // 1px
+$space-3xs: 0.125rem; // 2px
+$space-2xs: 0.25rem; // 4px
+$space-xs: 0.5rem; // 8px
+$space-s: 0.75rem; // 12px
+$space-m: 1rem; // 16px
+$space-l: 1.5rem; // 24px
+$space-xl: 2rem; // 32px
+$space-2xl: 2.5rem; // 40px
+$space-3xl: 3rem; // 48px
+$space-4xl: 3.5rem; // 56px
+$space-5xl: 4rem; // 64px
+$space-6xl: 4.5rem; // 72px
+$space-7xl: 5rem; // 80px
+$space-8xl: 6.25rem; // 100px
+$space-9xl: 7.5rem; // 120px
+$space-10xl: 8.75rem; // 140px
+
+$radius: 16px;
+$shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+$section-pad: clamp(26px, 8vw, 46px);
+$max-content-width: 70rem;
+
+$primary: #0b0f14;
+$secondary: #101620;
+$text: #e6edf3;
+$muted: #9fb0c1;
+$accent: #5bd3ff;
+$accent-2: #8a5bff;
+$line: rgba(139, 173, 203, 0.25);
+$glow: 0 0 12px rgba(91, 211, 255, 0.5);

@@ -1,0 +1,57 @@
+@use '../variables' as *;
+
+.card {
+  background: $secondary;
+  border: 1px solid $line;
+  border-radius: $radius;
+  box-shadow: $shadow;
+  position: relative;
+  overflow: hidden;
+
+  &--fx::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      120deg,
+      transparent 0%,
+      rgba(91, 211, 255, 0.12) 40%,
+      transparent 60%
+    );
+    opacity: 0.4;
+    mix-blend-mode: screen;
+  }
+
+  &__body {
+    position: relative;
+  }
+  &__body--p-18 {
+    padding: $space-m;
+  }
+  &__body--p-22 {
+    padding: $space-l;
+  }
+  &__body--p-24 {
+    padding: $space-l;
+  }
+
+  &__divider {
+    height: 1px;
+    margin: $space-l 0;
+    background: linear-gradient(90deg, transparent, $line, transparent);
+  }
+
+  &__meta {
+    font-size: $font-size-s;
+    color: $muted;
+    line-height: $line-height-0;
+    letter-spacing: $letter-spacing-4;
+  }
+
+  &__code {
+    margin: 0;
+    font-family: $font-mono;
+    line-height: $line-height-2;
+  }
+}

@@ -1,0 +1,111 @@
+@use './variables' as *;
+
+/* Skip link */
+.u-skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  &:focus {
+    left: $space-m;
+    top: $space-m;
+    width: auto;
+    height: auto;
+    background: $secondary;
+    padding: $space-xs $space-s;
+    border-radius: 12px;
+    outline: 2px solid $accent;
+  }
+}
+
+/* Background FX */
+.bgfx__cosmos {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(91, 211, 255, 0.08), transparent 60%),
+    radial-gradient(800px 400px at 10% 120%, rgba(138, 91, 255, 0.08), transparent 55%),
+    radial-gradient(500px 300px at 50% 30%, rgba(255, 255, 255, 0.04), transparent 60%),
+    repeating-radial-gradient(
+      circle at 50% 40%,
+      rgba(255, 255, 255, 0.06) 0 1px,
+      transparent 1px 6px
+    );
+  mix-blend-mode: screen;
+  mask-image: linear-gradient(#000, rgba(0, 0, 0, 0.3));
+  opacity: 0.6;
+}
+
+.bgfx__sweep {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.35;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -60% -40%;
+    background: conic-gradient(
+      from 0deg,
+      rgba(91, 211, 255, 0),
+      rgba(91, 211, 255, 0.25) 6%,
+      rgba(91, 211, 255, 0) 12%
+    );
+    transform-origin: 50% 60%;
+    animation: sweep 12s linear infinite;
+    filter: blur(2px);
+  }
+}
+@keyframes sweep {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Badges, tags, buttons, helpers */
+.badge {
+  font-size: $font-size-xs;
+  letter-spacing: $letter-spacing-2;
+  text-transform: uppercase;
+  color: $muted;
+  padding: $space-3xs $space-xs;
+  border: 1px solid $line;
+  border-radius: 999px;
+  line-height: $line-height-baseline;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-xs; // 8px
+  padding: $space-xs $space-s;
+  border-radius: 12px;
+  border: 1px solid $line;
+  background: $secondary;
+  color: $text;
+  text-decoration: none;
+  transition: transform 0.15s ease;
+  line-height: $line-height-0;
+  &:hover {
+    transform: translateY(-1px);
+  }
+  &--primary {
+    border-color: color-mix(in srgb, $accent 40%, $line);
+    box-shadow: $glow;
+  }
+}
+
+.u-callout {
+  border-left: 3px solid $accent;
+  padding-left: $space-s;
+  color: $muted;
+}
+
+.u-muted {
+  color: $muted;
+}

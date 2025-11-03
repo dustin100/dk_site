@@ -1,0 +1,28 @@
+@use '../variables' as *;
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: $space-m;
+  flex-wrap: wrap;
+
+  &__links {
+    display: flex;
+    gap: $space-xs;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  &__link {
+    padding: $space-xs $space-s;
+    border-radius: 10px;
+    color: $text;
+    text-decoration: none;
+    letter-spacing: $letter-spacing-1;
+    line-height: $line-height-0;
+    &.is-active,
+    &:hover {
+      background: color-mix(in srgb, $accent 18%, transparent);
+    }
+  }
+}

@@ -1,0 +1,25 @@
+@use '../variables' as *;
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-xs;
+
+  &__item {
+    font-size: $font-size-s;
+    border: 1px solid $line;
+    padding: $space-xs $space-s;
+    border-radius: 999px;
+    background: $secondary;
+    line-height: $line-height-baseline;
+    letter-spacing: $letter-spacing-1;
+  }
+}
+
+.skills {
+  &__title {
+    margin-bottom: $space-s;
+    line-height: $line-height-0;
+    letter-spacing: $letter-spacing-1;
+  }
+}

@@ -1,0 +1,8 @@
+.DS_Store
+**env
+.prettierrc
+
+# Node / Build
+**/node_modules/
+**/dist/
+**dist

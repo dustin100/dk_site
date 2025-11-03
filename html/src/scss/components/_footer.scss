@@ -1,0 +1,16 @@
+@use '../variables' as *;
+
+.site-footer {
+  padding: $space-l 0 $space-3xl;
+  color: $muted;
+
+  &__grid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-m;
+    flex-wrap: wrap;
+    line-height: $line-height-0;
+    letter-spacing: $letter-spacing-1;
+  }
+}

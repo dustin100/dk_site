@@ -1,0 +1,43 @@
+@use './variables' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: $font-primary;
+  background: $primary;
+  color: $text;
+  line-height: $line-height-3;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  letter-spacing: $letter-spacing-1;
+}
+
+a {
+  color: $accent;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.u-mono,
+.badge--mono,
+.tags__item--mono {
+  font-family: $font-mono;
+}

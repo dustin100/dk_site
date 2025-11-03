@@ -1,0 +1,147 @@
+@use './variables' as *;
+
+/* -------------------------------------------------------
+   Typography: Headings
+------------------------------------------------------- */
+
+%heading-base {
+  font-family: $font-primary;
+  font-weight: $font-weight-bold;
+  letter-spacing: $letter-spacing-1;
+  line-height: $line-height-0;
+  color: $text;
+  word-break: break-word;
+  margin: 0 0 $space-s;
+}
+
+$heading-sizes: (
+  h0: $font-size-6xl,
+  // 48px
+  h1: $font-size-5xl,
+  // 42px
+  h2: $font-size-4xl,
+  // 36px
+  h3: $font-size-3xl,
+  // 28px
+  h4: $font-size-2xl,
+  // 24px
+  h5: $font-size-xl, // 20px
+);
+
+h1 {
+  @extend %heading-base;
+  font-size: map-get($heading-sizes, h1);
+}
+h2 {
+  @extend %heading-base;
+  font-size: map-get($heading-sizes, h2);
+}
+h3 {
+  @extend %heading-base;
+  font-size: map-get($heading-sizes, h3);
+}
+h4 {
+  @extend %heading-base;
+  font-size: map-get($heading-sizes, h4);
+}
+h5 {
+  @extend %heading-base;
+  font-size: map-get($heading-sizes, h5);
+}
+
+/* Utility headings */
+.h0 {
+  @extend %heading-base;
+  font-size: map-get($heading-sizes, h0);
+}
+.h1 {
+  @extend %heading-base;
+  font-size: map-get($heading-sizes, h1);
+}
+.h2 {
+  @extend %heading-base;
+  font-size: map-get($heading-sizes, h2);
+}
+.h3 {
+  @extend %heading-base;
+  font-size: map-get($heading-sizes, h3);
+}
+.h4 {
+  @extend %heading-base;
+  font-size: map-get($heading-sizes, h4);
+}
+.h5 {
+  @extend %heading-base;
+  font-size: map-get($heading-sizes, h5);
+}
+
+.h--caps {
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-2;
+  line-height: $line-height-1;
+}
+.h--muted {
+  color: $muted;
+}
+.h--mono {
+  font-family: $font-mono;
+  font-weight: $font-weight-regular;
+}
+
+/* -------------------------------------------------------
+   Typography: Body Text
+------------------------------------------------------- */
+
+%body-base {
+  font-family: $font-primary;
+  color: $text;
+  letter-spacing: $letter-spacing-1;
+  line-height: $line-height-2;
+  margin: 0 0 $space-xs;
+}
+
+$body-sizes: (
+  body-l: $font-size-l,
+  // 18px
+  body-m: $font-size-m,
+  // 16px
+  body-s: $font-size-s,
+  // 14px
+  body-xs: $font-size-xs, // 12px
+);
+
+/* Element defaults */
+p {
+  @extend %body-base;
+  font-size: map-get($body-sizes, body-m);
+}
+li {
+  @extend %body-base;
+  font-size: map-get($body-sizes, body-m);
+}
+
+/* Utilities body */
+.body-l {
+  @extend %body-base;
+  font-size: map-get($body-sizes, body-l);
+}
+.body-m {
+  @extend %body-base;
+  font-size: map-get($body-sizes, body-m);
+}
+.body-s {
+  @extend %body-base;
+  font-size: map-get($body-sizes, body-s);
+}
+.body-xs {
+  @extend %body-base;
+  font-size: map-get($body-sizes, body-xs);
+}
+
+/* Weight modifiers */
+.body--regular {
+  font-weight: $font-weight-regular;
+}
+.body--semibold {
+  font-weight: $font-weight-semi-bold;
+}

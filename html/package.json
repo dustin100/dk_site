@@ -1,0 +1,17 @@
+{
+  "name": "html",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "live-server": "^1.2.2",
+    "prettier": "^3.6.2",
+    "sass": "^1.93.3"
+  },
+  "scripts": {
+    "sass": "sass --watch src/scss/main.scss:src/css/main.css --style=compressed",
+    "start": "live-server src",
+    "dev": "concurrently \"yarn sass\" \"yarn start\""
+  }
+}

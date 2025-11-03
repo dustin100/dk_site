@@ -1,0 +1,25 @@
+@use '../variables' as *;
+
+.contact {
+  &__panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-m;
+    align-items: start;
+    @media (max-width: 880px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__title {
+    margin-top: 0;
+    line-height: $line-height-0;
+    letter-spacing: $letter-spacing-1;
+  }
+
+  &__cta {
+    display: flex;
+    gap: $space-s;
+    flex-wrap: wrap;
+  }
+}
