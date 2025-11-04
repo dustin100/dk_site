@@ -18,4 +18,16 @@ export const aboutSection = defineType({
     }),
     defineField({name: 'callout', type: 'string'}),
   ],
+  preview: {
+    select: {
+      headline: 'title',
+    },
+    prepare({headline}) {
+      return {
+        title: 'About',
+        subtitle: headline || undefined,
+        media: DocumentIcon,
+      }
+    },
+  },
 })

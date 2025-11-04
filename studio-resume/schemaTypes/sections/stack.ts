@@ -26,4 +26,16 @@ export const stackSection = defineType({
       validation: (r) => r.max(3),
     }),
   ],
+  preview: {
+    select: {
+      headline: 'title',
+    },
+    prepare({headline}) {
+      return {
+        title: 'Stack',
+        subtitle: headline || undefined,
+        media: CodeBlockIcon,
+      }
+    },
+  },
 })

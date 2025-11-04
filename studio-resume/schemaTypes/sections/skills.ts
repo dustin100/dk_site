@@ -16,4 +16,16 @@ export const skillsSection = defineType({
       validation: (r) => r.unique().min(4),
     }),
   ],
+  preview: {
+    select: {
+      headline: 'title',
+    },
+    prepare({headline}) {
+      return {
+        title: 'Skills',
+        subtitle: headline || undefined,
+        media: TagIcon,
+      }
+    },
+  },
 })

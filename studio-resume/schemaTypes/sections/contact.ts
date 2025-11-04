@@ -16,4 +16,16 @@ export const contactSection = defineType({
       validation: (r) => r.max(3),
     }),
   ],
+  preview: {
+    select: {
+      headline: 'title',
+    },
+    prepare({headline}) {
+      return {
+        title: 'Contact',
+        subtitle: headline || undefined,
+        media: EnvelopeIcon,
+      }
+    },
+  },
 })

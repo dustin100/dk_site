@@ -16,4 +16,17 @@ export const workLogosMarqueeSection = defineType({
     }),
     defineField({name: 'strapline', type: 'string'}),
   ],
+
+  preview: {
+    select: {
+      headline: 'title',
+    },
+    prepare({headline}) {
+      return {
+        title: 'Work / Marquee',
+        subtitle: headline || undefined,
+        media: ImageIcon,
+      }
+    },
+  },
 })

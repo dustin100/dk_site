@@ -23,4 +23,17 @@ export const heroSection = defineType({
       of: [{type: 'string'}],
     }),
   ],
+  preview: {
+    select: {
+      headline: 'title',
+    },
+    prepare(selection) {
+      const {headline} = selection
+      return {
+        title: 'Hero',
+        subtitle: headline || undefined,
+        media: StarIcon,
+      }
+    },
+  },
 })
