@@ -20,20 +20,75 @@ customElements.define(
       const { versionBadge, siteName, nav = [] } = settings;
 
       this.innerHTML = `
-      <div class="container site-header__bar">
-        <div class="site-header__brand">
-          ${versionBadge ? `<span class="badge badge--mono">${versionBadge}</span>` : ''}
-          <div class="site-header__logo">
-            ${siteName ?? ''} <span class="site-header__logo-mono">K.</span>
+        <div class="container site-header__bar">
+          <div class="site-header__brand">
+            ${versionBadge ? `<span class="badge badge--mono">${versionBadge}</span>` : ''}
+            <div class="site-header__logo">
+              ${siteName ?? ''} <span class="site-header__logo-mono">K.</span>
+            </div>
           </div>
+
+          <!-- Mobile toggle -->
+          <button class="nav__toggle"
+                  type="button"
+                  aria-label="Open menu"
+                  aria-controls="primary-nav"
+                  aria-expanded="false">
+            <span class="nav__toggle-icon" aria-hidden="true"></span>
+          </button>
+
+          <nav class="nav" aria-label="Primary">
+            <div id="primary-nav" class="nav__links">
+            <button class="nav__close" type="button" aria-label="Close menu" data-close>
+              <span class="nav__close-icon" aria-hidden="true"></span>
+            </button>
+              ${nav.map(({ label, href }) => `<a class="nav__link" href="${href}">${label}</a>`).join('')}
+            </div>
+            <div class="nav__overlay" data-close></div>
+          </nav>
         </div>
-        <nav class="nav" aria-label="Primary">
-          <div class="nav__links">
-            ${nav.map(({ label, href }) => `<a class="nav__link" href="${href}">${label}</a>`).join('')}
-          </div>
-        </nav>
-      </div>
-    `;
+      `;
+
+      this.wireUpMenu();
+    }
+
+    wireUpMenu() {
+      const nav = this.querySelector('.nav');
+      const panel = this.querySelector('#primary-nav');
+      const toggle = this.querySelector('.nav__toggle');
+      const overlay = this.querySelector('.nav__overlay');
+      if (!nav || !panel || !toggle) return;
+
+      const open = () => {
+        nav.classList.add('nav--open');
+        document.body.classList.add('nav-open');
+        toggle.setAttribute('aria-expanded', 'true');
+        toggle.setAttribute('aria-label', 'Close menu');
+        const firstLink = panel.querySelector('a');
+        if (firstLink) firstLink.focus({ preventScroll: true });
+      };
+
+      const close = () => {
+        nav.classList.remove('nav--open');
+        document.body.classList.remove('nav-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open menu');
+        toggle.focus({ preventScroll: true });
+      };
+
+      const toggleMenu = () => (nav.classList.contains('nav--open') ? close() : open());
+
+      toggle.addEventListener('click', toggleMenu);
+      overlay?.addEventListener('click', close);
+      panel.addEventListener('click', (e) => {
+        if (e.target.closest('a')) close();
+      });
+      this.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') close();
+      });
+
+      const closeEls = this.querySelectorAll('[data-close]');
+      closeEls.forEach((el) => el.addEventListener('click', close));
     }
   }
 );
