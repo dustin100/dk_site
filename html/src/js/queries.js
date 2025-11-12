@@ -16,7 +16,10 @@ export const HOME_QUERY = `
         title,
         subtitle,
         "ctas": ctas[]{label, href, style},
-        "summaryBullets": summaryBullets
+        photo {
+          alt,
+          "src": asset->url
+        }
       }
       ,
       _type == "aboutSection" => {

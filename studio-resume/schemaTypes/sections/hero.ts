@@ -7,32 +7,58 @@ export const heroSection = defineType({
   type: 'object',
   icon: StarIcon,
   fields: [
-    defineField({name: 'kicker', type: 'string'}),
-    defineField({name: 'title', type: 'string', validation: (r) => r.required()}),
-    defineField({name: 'subtitle', type: 'text'}),
+    defineField({
+      name: 'kicker',
+      type: 'string',
+      title: 'Kicker',
+    }),
+    defineField({
+      name: 'title',
+      type: 'string',
+      title: 'Title',
+      validation: (r) => r.required(),
+    }),
+    defineField({
+      name: 'subtitle',
+      type: 'text',
+      title: 'Subtitle',
+    }),
     defineField({
       name: 'ctas',
+      title: 'CTAs',
       type: 'array',
       of: [{type: 'ctaLink'}],
       validation: (r) => r.max(2),
     }),
     defineField({
-      name: 'summaryBullets',
-      title: 'Summary (mono card)',
-      type: 'array',
-      of: [{type: 'string'}],
+      name: 'photo',
+      title: 'Hero image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        defineField({
+          name: 'alt',
+          type: 'string',
+          title: 'Alt text',
+          description: 'Describe the image for screen readers.',
+          validation: (r) => r.required().min(4),
+        }),
+      ],
     }),
   ],
   preview: {
     select: {
       headline: 'title',
+      media: 'photo',
     },
     prepare(selection) {
-      const {headline} = selection
+      const {headline, media} = selection
       return {
         title: 'Hero',
         subtitle: headline || undefined,
-        media: StarIcon,
+        media: media || StarIcon,
       }
     },
   },
