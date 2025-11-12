@@ -10,7 +10,9 @@ import './components.js';
  */
 function renderHeader(siteSettings) {
   const headerElement = document.querySelector('site-header');
-  if (headerElement) headerElement.data = siteSettings;
+  if (headerElement) {
+    headerElement.data = siteSettings;
+  }
 }
 
 /**

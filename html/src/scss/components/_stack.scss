@@ -3,14 +3,14 @@
 .stack {
   &__title {
     margin-bottom: $space-s;
-    line-height: $line-height-0; // 140%
-    letter-spacing: $letter-spacing-1; // 0
+    line-height: $line-height-0;
+    letter-spacing: $letter-spacing-1;
   }
 
   &__grid {
     display: grid;
     grid-template-columns: 1.2fr 0.8fr;
-    gap: $space-l; // 24px
+    gap: $space-l;
     align-items: start;
 
     @media (max-width: 880px) {

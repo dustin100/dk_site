@@ -8,7 +8,7 @@
   font-family: $font-primary;
   font-weight: $font-weight-bold;
   letter-spacing: $letter-spacing-1;
-  line-height: $line-height-0;
+  line-height: $line-height-block-text;
   color: $text;
   word-break: break-word;
   margin: 0 0 $space-s;
@@ -78,7 +78,7 @@ h5 {
 .h--caps {
   text-transform: uppercase;
   letter-spacing: $letter-spacing-2;
-  line-height: $line-height-1;
+  line-height: $line-height-block-text;
 }
 .h--muted {
   color: $muted;
@@ -96,8 +96,8 @@ h5 {
   font-family: $font-primary;
   color: $text;
   letter-spacing: $letter-spacing-1;
-  line-height: $line-height-2;
-  margin: 0 0 $space-xs;
+  line-height: $line-height-block-text;
+  margin: 0 0 $space-m;
 }
 
 $body-sizes: (

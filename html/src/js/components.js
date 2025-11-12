@@ -24,7 +24,7 @@ customElements.define(
           <div class="site-header__brand">
             ${versionBadge ? `<span class="badge badge--mono">${versionBadge}</span>` : ''}
             <div class="site-header__logo">
-              ${siteName ?? ''} <span class="site-header__logo-mono">K.</span>
+              ${siteName ?? ''}
             </div>
           </div>
 
@@ -42,7 +42,7 @@ customElements.define(
             <button class="nav__close" type="button" aria-label="Close menu" data-close>
               <span class="nav__close-icon" aria-hidden="true"></span>
             </button>
-              ${nav.map(({ label, href }) => `<a class="nav__link" href="${href}">${label}</a>`).join('')}
+              ${nav.map(({ label, href }) => `<a class="nav__link link" href="${href}">${label}</a>`).join('')}
             </div>
             <div class="nav__overlay" data-close></div>
           </nav>
@@ -97,37 +97,54 @@ customElements.define(
   'section-hero',
   class SectionHero extends SectionBase {
     render(hero = {}) {
-      const { kicker, title, subtitle, ctas = [], summaryBullets = [] } = hero;
+      const { kicker, title, subtitle, ctas = [], photo } = hero;
+      console.log('Rendering hero:', hero);
+
+      const hasPhoto = !!photo.src;
+      const w = 880;
+      const h = 560;
+      const photoUrl = hasPhoto ? imageUrlWithSize(photo.src, { width: w, height: h }) : '';
+      const photoAlt = photo?.alt || '';
 
       this.innerHTML = `
-      <section id="hero" class="hero" aria-labelledby="intro-title">
-        <div class="hero__grid">
-          <div class="hero__intro">
-            ${kicker ? `<div class="hero__kicker badge--mono">${kicker}</div>` : ''}
-            <h1 id="intro-title" class="hero__title">${title ?? ''}</h1>
-            ${subtitle ? `<p class="hero__subtitle">${subtitle}</p>` : ''}
-            <div class="hero__cta">
-              ${ctas
-                .map(
-                  ({ label, href, style }) =>
-                    `<a class="btn ${style === 'primary' ? 'btn--primary' : ''}" href="${href}">${label}</a>`
-                )
-                .join('')}
+        <section id="hero" class="hero" aria-labelledby="intro-title">
+          <div class="hero__grid">
+            <div class="hero__intro">
+              ${kicker ? `<div class="hero__kicker badge--mono">${kicker}</div>` : ''}
+              <h1 id="intro-title" class="hero__title">${title ?? ''}</h1>
+              ${subtitle ? `<p class="hero__subtitle">${subtitle}</p>` : ''}
+              <div class="hero__cta">
+                ${ctas
+                  .map(
+                    ({ label, href, style }) =>
+                      `<a class="btn ${style === 'primary' ? 'btn--primary' : ''}" href="${href}">${label}</a>`
+                  )
+                  .join('')}
+              </div>
+            </div>
+
+            <div class="hero__media"${photoUrl ? '' : ' aria-hidden="true"'}>
+              ${
+                photoUrl
+                  ? `
+                <figure class="hero__photo">
+                  <img
+                    class="hero__photo-img"
+                    src="${photoUrl}"
+                    alt="${photoAlt}"
+                    width="${w}"
+                    height="${h}"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+              `
+                  : ''
+              }
             </div>
           </div>
-
-          <div class="hero__summary">
-            <article class="card card--fx">
-              <div class="card__body card__body--p-18">
-                <div class="card__meta badge--mono">/summary</div>
-                <div class="card__divider"></div>
-                ${summaryBullets.map((line) => `<p class="card__code">${line}</p>`).join('')}
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-    `;
+        </section>
+      `;
     }
   }
 );
@@ -146,7 +163,6 @@ customElements.define(
               <div class="card__body card__body--p-22">
                 <h2 id="about-title" class="about__title">${title ?? ''}</h2>
                 ${renderPortableText(body)}
-                ${callout ? `<p class="about__callout u-callout">${callout}</p>` : ''}
               </div>
             </article>
           </div>
@@ -155,7 +171,7 @@ customElements.define(
             <article class="card card--fx">
               <div class="card__body card__body--p-22">
                 ${subtitle ? `<h3 class="about__subtitle badge--mono h2">${subtitle}</h3>` : ''}
-                <ul class="about__list">
+                <ul class="card__list">
                   ${bullets.map((text) => `<li>${text}</li>`).join('')}
                 </ul>
               </div>
@@ -180,35 +196,37 @@ customElements.define(
       }
 
       const renderLogo = ({ url = '#', name = '', src, alt }) => {
-        const w = 160,
-          h = 60;
+        const w = 180;
+        const h = 120;
         const imgUrl = imageUrlWithSize(src, { width: w, height: h });
         const safeAlt = alt ?? name ?? '';
+
         return `
-          <a href="${url}" target="_blank" rel="noopener">
-            <img
-              src="${imgUrl}"
-              alt="${safeAlt}"
-              width="${w}" height="${h}"
-              loading="lazy" decoding="async"
-            />
-          </a>
+          <li class="work__item">
+            <a class="work__logo-link" href="${url}" target="_blank" rel="noopener">
+              <img
+                class="work__logo"
+                src="${imgUrl}"
+                alt="${safeAlt}"
+                width="${w}" height="${h}"
+                loading="lazy" decoding="async"
+              />
+            </a>
+          </li>
         `;
       };
 
-      const track = logos.map(renderLogo).join('');
+      const grid = logos.map(renderLogo).join('');
 
       this.innerHTML = `
         <section id="work" class="work" aria-labelledby="work-title">
           <h2 id="work-title" class="work__title">${title}</h2>
           <article class="card card--fx work__logos">
             <div class="card__body card__body--p-24">
-              <div class="marquee" aria-label="Brand logos">
-                <div class="marquee__track">
-                  ${track}${track} <!-- duplicate for seamless loop -->
-                </div>
-              </div>
-              ${strapline ? `<p class="work__strap badge--mono work__strap--muted">${strapline}</p>` : ''}
+              ${strapline ? `<p class="work__strap work__strap--muted">${strapline}</p>` : ''}
+              <ul class="work__grid" aria-label="Brand logos">
+                ${grid}
+              </ul>
             </div>
           </article>
         </section>
@@ -263,7 +281,7 @@ customElements.define(
               <div class="stack__summary">
                 ${renderPortableText(currentStack.summary)}
                 <ul class="stack__list">
-                  ${list.map((item) => `<li>${item}</li>`).join('')}
+                  ${currentStack?.list.map((item) => `<li>${item}</li>`).join('')}
                 </ul>
               </div>
               <div class="stack__switcher" role="group" aria-label="Site framework switcher">
