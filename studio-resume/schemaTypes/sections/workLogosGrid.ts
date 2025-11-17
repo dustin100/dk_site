@@ -1,9 +1,9 @@
 import {defineField, defineType} from 'sanity'
 import {ImageIcon} from '@sanity/icons'
 
-export const workLogosMarqueeSection = defineType({
-  name: 'workLogosMarqueeSection',
-  title: 'Work – Logos Marquee',
+export const workLogosGridSection = defineType({
+  name: 'workLogosGridSection',
+  title: 'Work – Logos Grid',
   type: 'object',
   icon: ImageIcon,
   fields: [
@@ -23,7 +23,7 @@ export const workLogosMarqueeSection = defineType({
     },
     prepare({headline}) {
       return {
-        title: 'Work / Marquee',
+        title: 'Work – Logos Grid',
         subtitle: headline || undefined,
         media: ImageIcon,
       }

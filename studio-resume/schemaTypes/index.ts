@@ -9,7 +9,7 @@ import {portableTextSimple} from './objects/portableTextSimple'
 
 import {heroSection} from './sections/hero'
 import {aboutSection} from './sections/about'
-import {workLogosMarqueeSection} from './sections/workLogosMarquee'
+import {workLogosGridSection} from './sections/workLogosGrid'
 import {skillsSection} from './sections/skills'
 import {stackSection} from './sections/stack'
 import {contactSection} from './sections/contact'
@@ -29,7 +29,7 @@ export const schemaTypes = [
   // sections
   heroSection,
   aboutSection,
-  workLogosMarqueeSection,
+  workLogosGridSection,
   skillsSection,
   stackSection,
   contactSection,

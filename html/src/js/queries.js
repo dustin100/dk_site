@@ -31,7 +31,7 @@ export const HOME_QUERY = `
         bullets[]
       }
       ,
-      _type == "workLogosMarqueeSection" => {
+      _type == "workLogosGridSection" => {
         _type,
         title,
         strapline,

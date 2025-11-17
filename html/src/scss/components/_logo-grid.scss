@@ -1,0 +1,51 @@
+@use '../variables' as *;
+
+.work {
+  &__grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: $space-l $space-xl;
+    align-items: center;
+    justify-items: center;
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $space-2xs;
+    border: 1px solid transparent;
+    transition:
+      border-color 160ms ease-out,
+      background-color 160ms ease-out,
+      box-shadow 180ms ease-out,
+      transform 180ms ease-out;
+  }
+
+  &__logo-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: $space-xs;
+    border-radius: 0.75rem;
+    text-decoration: none;
+    outline: none;
+    z-index: 1;
+  }
+
+  &__logo {
+    max-width: 100%;
+    height: auto;
+  }
+
+  &__item:hover,
+  &__item:focus-within {
+    border: 1px solid $accent;
+    border-radius: 0.75rem;
+  }
+}

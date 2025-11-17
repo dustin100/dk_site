@@ -20,7 +20,7 @@ export const page = defineType({
       of: [
         {type: 'heroSection'},
         {type: 'aboutSection'},
-        {type: 'workLogosMarqueeSection'},
+        {type: 'workLogosGridSection'},
         {type: 'skillsSection'},
         {type: 'stackSection'},
         {type: 'contactSection'},

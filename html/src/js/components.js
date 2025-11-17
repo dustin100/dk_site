@@ -285,7 +285,7 @@ customElements.define(
                 </ul>
               </div>
               <div class="stack__switcher" role="group" aria-label="Site framework switcher">
-                <p class="u-muted">Try the same site in different stacks:</p>
+                <p class="u-muted">Try the same site in different stacks: (coming soon)</p>
                 <div class="stack__buttons">
                   ${stacks
                     .map(
