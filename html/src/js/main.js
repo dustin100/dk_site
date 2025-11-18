@@ -1,6 +1,7 @@
 import { client } from './sanityClient.js';
 import { HOME_QUERY } from './queries.js';
 import { sectionRegistry } from './registry.js';
+import { findStackSection, selectStackVariant } from './utils.js';
 import './components.js';
 
 /**
@@ -40,6 +41,35 @@ function renderSections(sectionArray) {
 }
 
 /**
+ * Get the "built with" info from the stackSection in sections.
+ * @param {SectionData[]} sections
+ * @returns {string|null}
+ */
+function getBuiltWithFromSections(sections = []) {
+  const stackSection = findStackSection(sections);
+  if (!stackSection) return null;
+
+  const currentStack = selectStackVariant(stackSection.stacks, 'html');
+  if (!currentStack) return null;
+
+  return currentStack.builtWith || currentStack.label || null;
+}
+
+/**
+ * Render the footer web component with site settings and builtWith info.
+ * @param {SiteSettings} settings
+ * @param {SectionData[]} sections
+ * @returns {void}
+ */
+function renderFooter(settings, sections) {
+  const footerElement = document.querySelector('site-footer');
+  if (!footerElement) return;
+
+  const builtWith = getBuiltWithFromSections(sections);
+  footerElement.data = { settings, builtWith };
+}
+
+/**
  * Starts the app: fetch CMS data then renders header + sections.
  * @returns {Promise<void>}
  */
@@ -48,14 +78,10 @@ async function startApp() {
     const { settings, home } = await client.fetch(HOME_QUERY);
     renderHeader(settings);
     renderSections(home?.sections);
+    renderFooter(settings, home?.sections);
   } catch (error) {
     console.error('[SANITY] fetch failed:', error.message, error.response?.body);
   }
 }
 
 startApp();
-
-document.addEventListener('DOMContentLoaded', () => {
-  const yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-});

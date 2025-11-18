@@ -1,4 +1,4 @@
-import { renderPortableText, imageUrlWithSize } from './utils.js';
+import { renderPortableText, imageUrlWithSize, selectStackVariant } from './utils.js';
 
 class SectionBase extends HTMLElement {
   _data;
@@ -98,11 +98,10 @@ customElements.define(
   class SectionHero extends SectionBase {
     render(hero = {}) {
       const { kicker, title, subtitle, ctas = [], photo } = hero;
-      console.log('Rendering hero:', hero);
 
       const hasPhoto = !!photo.src;
-      const w = 880;
-      const h = 560;
+      const w = 1700;
+      const h = 1125;
       const photoUrl = hasPhoto ? imageUrlWithSize(photo.src, { width: w, height: h }) : '';
       const photoAlt = photo?.alt || '';
 
@@ -270,7 +269,7 @@ customElements.define(
     render(stack = {}) {
       const { title = '', list = [], stacks = [] } = stack;
 
-      const currentStack = stacks.find((s) => s.label?.toLowerCase() === 'html') || {};
+      const currentStack = selectStackVariant(stacks, 'html') || {};
 
       this.innerHTML = `
       <section id="stack" class="stack" aria-labelledby="stack-title">
@@ -330,6 +329,29 @@ customElements.define(
         </div>
       </section>
     `;
+    }
+  }
+);
+
+customElements.define(
+  'site-footer',
+  class SiteFooter extends SectionBase {
+    render(data = {}) {
+      const { settings = {}, builtWith } = data;
+
+      const title = settings.siteName || '';
+      const builtWithText = builtWith || '';
+      const year = new Date().getFullYear();
+
+      this.innerHTML = `
+        <footer class="site-footer">
+          <div class="container site-footer__grid">
+            <div class="u-mono">
+              © ${year} ${title} ${builtWithText}
+            </div>
+          </div>
+        </footer>
+      `;
     }
   }
 );

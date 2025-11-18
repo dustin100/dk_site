@@ -23,8 +23,8 @@ export const stackSection = defineType({
               title: 'Label',
               type: 'string',
               validation: (r) => r.required(),
-            }), // e.g., HTML, React, Vue
-            defineField({name: 'host', title: 'Host / Domain', type: 'string'}), // e.g., react.dustinkelly.dev
+            }),
+            defineField({name: 'host', title: 'Host / Domain', type: 'string'}),
             defineField({name: 'summary', title: 'Summary', type: 'portableTextSimple'}),
             defineField({
               name: 'list',
@@ -32,6 +32,7 @@ export const stackSection = defineType({
               type: 'array',
               of: [{type: 'string'}],
             }),
+            defineField({name: 'builtWith', title: 'Built With', type: 'string'}),
           ],
           preview: {
             select: {label: 'label', host: 'host'},

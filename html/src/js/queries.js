@@ -52,7 +52,8 @@ export const HOME_QUERY = `
           label,
           host,
           summary,
-          list
+          list,
+          builtWith
         }
       }
       ,

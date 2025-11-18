@@ -32,3 +32,27 @@ export function imageUrlWithSize(src, { width, height } = {}) {
   });
   return `${src}?${params.toString()}`;
 }
+
+/**
+ * Select a stack variant from an array of stacks, preferring a given label.
+ * @param {Array<{label?: string}>} stacks
+ * @param {string} [preferredLabel='html']
+ * @returns {{label?: string}|null}
+ */
+export function selectStackVariant(stacks = [], preferredLabel = 'html') {
+  if (!stacks || !stacks.length) return null;
+
+  const preferred = preferredLabel.toLowerCase();
+
+  return stacks.find((s) => s.label?.toLowerCase() === preferred) || stacks[0] || null;
+}
+
+/**
+ * Find and return the stackSection from an array of sections.
+ * @param {Array<{_type: string}>} sections
+ * @returns {{_type: string}|null}
+ */
+export function findStackSection(sections = []) {
+  if (!Array.isArray(sections)) return null;
+  return sections.find((s) => s._type === 'stackSection') || null;
+}
