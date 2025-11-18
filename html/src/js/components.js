@@ -196,8 +196,8 @@ customElements.define(
       }
 
       const renderLogo = ({ url = '#', name = '', src, alt }) => {
-        const w = 180;
-        const h = 120;
+        const w = 360;
+        const h = 240;
         const imgUrl = imageUrlWithSize(src, { width: w, height: h });
         const safeAlt = alt ?? name ?? '';
 
@@ -223,7 +223,7 @@ customElements.define(
           <h2 id="work-title" class="work__title">${title}</h2>
           <article class="card card--fx work__logos">
             <div class="card__body card__body--p-24">
-              ${strapline ? `<p class="work__strap work__strap--muted">${strapline}</p>` : ''}
+              ${strapline ? `<p class="work__strap">${strapline}</p>` : ''}
               <ul class="work__grid" aria-label="Brand logos">
                 ${grid}
               </ul>
