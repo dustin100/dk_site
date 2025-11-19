@@ -8,6 +8,9 @@ export const HOME_QUERY = `
     contactEmail,
     seo{title, description, "ogImage": ogImage.asset->url}
   },
+  "strings": *[_type=="strings"][0]{
+    ...
+  },
   "home": *[_type=="homePage"][0]{
     sections[]{
       _type == "heroSection" => {
@@ -48,6 +51,7 @@ export const HOME_QUERY = `
       _type == "stackSection" => {
         _type,
         title,
+        tryStack,
         "stacks": stacks[]{
           label,
           host,

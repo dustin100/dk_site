@@ -17,7 +17,8 @@ customElements.define(
   'site-header',
   class SiteHeader extends SectionBase {
     render(settings = {}) {
-      const { versionBadge, siteName, nav = [] } = settings;
+      const { versionBadge, siteName, nav = [], strings = {} } = settings;
+      const { mainNavLabel, menuToggleOpen, menuToggleClose } = strings;
 
       this.innerHTML = `
         <div class="container site-header__bar">
@@ -31,17 +32,17 @@ customElements.define(
           <!-- Mobile toggle -->
           <button class="nav__toggle"
                   type="button"
-                  aria-label="Open menu"
+                  aria-label="${menuToggleOpen}"
                   aria-controls="primary-nav"
                   aria-expanded="false">
             <span class="nav__toggle-icon" aria-hidden="true"></span>
           </button>
 
-          <nav class="nav" aria-label="Primary">
+          <nav class="nav" aria-label="${mainNavLabel}">
             <div id="primary-nav" class="nav__links">
-            <button class="nav__close" type="button" aria-label="Close menu" data-close>
-              <span class="nav__close-icon" aria-hidden="true"></span>
-            </button>
+              <button class="nav__close" type="button" aria-label="${menuToggleClose}" data-close>
+                <span class="nav__close-icon" aria-hidden="true"></span>
+              </button>
               ${nav.map(({ label, href }) => `<a class="nav__link link" href="${href}">${label}</a>`).join('')}
             </div>
             <div class="nav__overlay" data-close></div>
@@ -49,10 +50,12 @@ customElements.define(
         </div>
       `;
 
-      this.wireUpMenu();
+      this.wireUpMenu({ menuToggleOpen, menuToggleClose });
     }
 
-    wireUpMenu() {
+    wireUpMenu(labels = {}) {
+      const { menuToggleOpen, menuToggleClose } = labels;
+
       const nav = this.querySelector('.nav');
       const panel = this.querySelector('#primary-nav');
       const toggle = this.querySelector('.nav__toggle');
@@ -63,7 +66,7 @@ customElements.define(
         nav.classList.add('nav--open');
         document.body.classList.add('nav-open');
         toggle.setAttribute('aria-expanded', 'true');
-        toggle.setAttribute('aria-label', 'Close menu');
+        toggle.setAttribute('aria-label', menuToggleClose);
         const firstLink = panel.querySelector('a');
         if (firstLink) firstLink.focus({ preventScroll: true });
       };
@@ -72,7 +75,7 @@ customElements.define(
         nav.classList.remove('nav--open');
         document.body.classList.remove('nav-open');
         toggle.setAttribute('aria-expanded', 'false');
-        toggle.setAttribute('aria-label', 'Open menu');
+        toggle.setAttribute('aria-label', menuToggleOpen);
         toggle.focus({ preventScroll: true });
       };
 
@@ -106,11 +109,11 @@ customElements.define(
       const photoAlt = photo?.alt || '';
 
       this.innerHTML = `
-        <section id="hero" class="hero" aria-labelledby="intro-title">
+        <section id="hero" class="hero">
           <div class="hero__grid">
             <div class="hero__intro">
               ${kicker ? `<div class="hero__kicker badge--mono">${kicker}</div>` : ''}
-              <h1 id="intro-title" class="hero__title">${title ?? ''}</h1>
+              <h1 class="hero__title">${title ?? ''}</h1>
               ${subtitle ? `<p class="hero__subtitle">${subtitle}</p>` : ''}
               <div class="hero__cta">
                 ${ctas
@@ -133,7 +136,7 @@ customElements.define(
                     alt="${photoAlt}"
                     width="${w}"
                     height="${h}"
-                    loading="lazy"
+                    loading="eager"
                     decoding="async"
                   />
                 </figure>
@@ -155,12 +158,12 @@ customElements.define(
       const { title, body, subtitle, bullets = [], callout } = about;
 
       this.innerHTML = `
-      <section id="about" class="about" aria-labelledby="about-title">
+      <section id="about" class="about">
         <div class="grid">
           <div class="col-6">
             <article class="card card--fx">
               <div class="card__body card__body--p-22">
-                <h2 id="about-title" class="about__title">${title ?? ''}</h2>
+                <h2 class="about__title">${title ?? ''}</h2>
                 ${renderPortableText(body)}
               </div>
             </article>
@@ -186,8 +189,9 @@ customElements.define(
 customElements.define(
   'section-work',
   class SectionWork extends SectionBase {
-    render(work = {}) {
-      const { title = 'Work', strapline, logos = [] } = work;
+    render(data = {}) {
+      const { title = '', strapline, logos = [], strings = {} } = data;
+      const { workLogosLabel = '' } = strings;
 
       if (!logos.length) {
         this.innerHTML = '';
@@ -218,12 +222,12 @@ customElements.define(
       const grid = logos.map(renderLogo).join('');
 
       this.innerHTML = `
-        <section id="work" class="work" aria-labelledby="work-title">
-          <h2 id="work-title" class="work__title">${title}</h2>
+        <section id="work" class="work">
+          <h2 class="work__title">${title}</h2>
           <article class="card card--fx work__logos">
             <div class="card__body card__body--p-24">
               ${strapline ? `<p class="work__strap">${strapline}</p>` : ''}
-              <ul class="work__grid" aria-label="Brand logos">
+              <ul class="work__grid" aria-label="${workLogosLabel}">
                 ${grid}
               </ul>
             </div>
@@ -241,10 +245,10 @@ customElements.define(
       const { title = '', intro, tags = [] } = skills;
 
       this.innerHTML = `
-      <section id="skills" class="skills" aria-labelledby="skills-title">
+      <section id="skills" class="skills">
         <div class="grid">
           <div class="col-12">
-            <h2 id="skills-title" class="skills__title">${title}</h2>
+            <h2 class="skills__title">${title}</h2>
           </div>
           <div class="col-12">
             <article class="card card--fx">
@@ -266,39 +270,40 @@ customElements.define(
 customElements.define(
   'section-stack',
   class SectionStack extends SectionBase {
-    render(stack = {}) {
-      const { title = '', list = [], stacks = [] } = stack;
+    render(data = {}) {
+      const { title = '', tryStack = '', stacks = [], strings = {} } = data;
 
+      const { stackSwitcherLabel = '' } = strings;
       const currentStack = selectStackVariant(stacks, 'html') || {};
 
       this.innerHTML = `
-      <section id="stack" class="stack" aria-labelledby="stack-title">
-        <h2 id="stack-title" class="stack__title">${title}</h2>
-        <article class="card card--fx">
-          <div class="card__body card__body--p-22">
-            <div class="stack__grid">
-              <div class="stack__summary">
-                ${renderPortableText(currentStack.summary)}
-                <ul class="stack__list">
-                  ${currentStack?.list.map((item) => `<li>${item}</li>`).join('')}
-                </ul>
-              </div>
-              <div class="stack__switcher" role="group" aria-label="Site framework switcher">
-                <p class="u-muted">Try the same site in different stacks: (coming soon)</p>
-                <div class="stack__buttons">
-                  ${stacks
-                    .map(
-                      ({ label, host }) =>
-                        `<a class="btn stack__btn" data-target-host="${host}" href="https://${host}">${label}</a>`
-                    )
-                    .join('')}
+        <section id="stack" class="stack">
+          <h2 class="stack__title">${title}</h2>
+          <article class="card card--fx">
+            <div class="card__body card__body--p-22">
+              <div class="stack__grid">
+                <div class="stack__summary">
+                  ${renderPortableText(currentStack.summary)}
+                  <ul class="stack__list">
+                    ${currentStack?.list.map((item) => `<li>${item}</li>`).join('')}
+                  </ul>
+                </div>
+                <div class="stack__switcher" role="group" aria-label="${stackSwitcherLabel}">
+                  <p class="u-muted">${tryStack}</p>
+                  <div class="stack__buttons">
+                    ${stacks
+                      .map(
+                        ({ label, host }) =>
+                          `<a class="btn stack__btn" data-target-host="${host}" href="https://${host}">${label}</a>`
+                      )
+                      .join('')}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </article>
-      </section>
-    `;
+          </article>
+        </section>
+      `;
     }
   }
 );
@@ -310,11 +315,11 @@ customElements.define(
       const { title = '', body, ctas = [] } = contact;
 
       this.innerHTML = `
-      <section id="contact" class="contact" aria-labelledby="contact-title">
+      <section id="contact" class="contact">
         <div class="contact__panel">
           <article class="card card--fx">
             <div class="card__body card__body--p-22">
-              <h2 id="contact-title" class="contact__title">${title}</h2>
+              <h2 class="contact__title">${title}</h2>
               ${renderPortableText(body)}
               <div class="contact__cta">
                 ${ctas

@@ -7,21 +7,26 @@ import './components.js';
 /**
  * Render the header web component with site settings.
  * @param {SiteSettings} siteSettings
+ * @param {Strings} strings
  * @returns {void}
  */
-function renderHeader(siteSettings) {
+function renderHeader(settings, strings) {
   const headerElement = document.querySelector('site-header');
-  if (headerElement) {
-    headerElement.data = siteSettings;
-  }
+  if (!headerElement) return;
+
+  headerElement.data = {
+    ...settings,
+    strings,
+  };
 }
 
 /**
  * Replace dynamic sections in <main> with components mapped by sectionRegistry.
  * @param {SectionData[]} sectionArray
+ * @param {Strings} strings
  * @returns {void}
  */
-function renderSections(sectionArray) {
+function renderSections(sectionArray = [], strings = {}) {
   const mainContainer = document.querySelector('#main');
   if (!mainContainer) return;
 
@@ -35,7 +40,7 @@ function renderSections(sectionArray) {
     }
     const sectionElement = document.createElement(tagName);
     sectionElement.setAttribute('data-dynamic-section', '');
-    sectionElement.data = sectionData;
+    sectionElement.data = { ...sectionData, strings };
     mainContainer.appendChild(sectionElement);
   });
 }
@@ -75,9 +80,10 @@ function renderFooter(settings, sections) {
  */
 async function startApp() {
   try {
-    const { settings, home } = await client.fetch(HOME_QUERY);
-    renderHeader(settings);
-    renderSections(home?.sections);
+    const { settings, home, strings } = await client.fetch(HOME_QUERY);
+
+    renderHeader(settings, strings);
+    renderSections(home?.sections, strings);
     renderFooter(settings, home?.sections);
   } catch (error) {
     console.error('[SANITY] fetch failed:', error.message, error.response?.body);

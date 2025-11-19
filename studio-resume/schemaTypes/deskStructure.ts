@@ -1,6 +1,6 @@
 // schemaTypes/deskStructure.ts
 import type {StructureResolver} from 'sanity/structure'
-import {HomeIcon, CogIcon, DocumentIcon} from '@sanity/icons'
+import {HomeIcon, CogIcon, DocumentIcon, TextIcon} from '@sanity/icons'
 
 const deskStructure: StructureResolver = (S) =>
   S.list()
@@ -19,6 +19,11 @@ const deskStructure: StructureResolver = (S) =>
         .child(
           S.editor().id('siteSettingsEditor').schemaType('siteSettings').documentId('siteSettings'),
         ),
+      S.listItem()
+        .title('Accessibility & Global Copy')
+        .id('strings')
+        .icon(TextIcon)
+        .child(S.editor().id('stringsEditor').schemaType('strings').documentId('strings')),
 
       S.divider(),
 

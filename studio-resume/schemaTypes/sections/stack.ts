@@ -8,7 +8,17 @@ export const stackSection = defineType({
   type: 'object',
   icon: CodeBlockIcon,
   fields: [
-    defineField({name: 'title', type: 'string', initialValue: 'Under the hood'}),
+    defineField({
+      name: 'title',
+      type: 'string',
+      initialValue: 'Under the hood',
+    }),
+    defineField({
+      name: 'tryStack',
+      title: 'Try Stack Text',
+      type: 'string',
+      initialValue: 'Try the same site in different stacks:',
+    }),
     defineField({
       name: 'stacks',
       title: 'Stacks',
