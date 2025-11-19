@@ -1,6 +1,7 @@
 import {siteSettings} from './siteSettings'
 import {page} from './page'
 import {homePage} from './homePage'
+import {strings} from './strings'
 
 import {navLink} from './objects/navLink'
 import {ctaLink} from './objects/ctaLink'
@@ -19,6 +20,7 @@ export const schemaTypes = [
   siteSettings,
   page,
   homePage,
+  strings,
 
   // objects
   navLink,
