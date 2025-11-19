@@ -30,6 +30,7 @@ export const siteSettings = defineType({
         {name: 'title', type: 'string'},
         {name: 'description', type: 'text'},
         {name: 'ogImage', type: 'image', options: {hotspot: true}},
+        {name: 'favicon', title: 'Favicon', type: 'image'},
       ],
     }),
     defineField({

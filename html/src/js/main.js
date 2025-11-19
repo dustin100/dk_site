@@ -1,8 +1,58 @@
 import { client } from './sanityClient.js';
 import { HOME_QUERY } from './queries.js';
 import { sectionRegistry } from './registry.js';
-import { findStackSection, selectStackVariant } from './utils.js';
+import { findStackSection, selectStackVariant, imageUrlWithSize } from './utils.js';
 import './components.js';
+
+/**
+ * Apply SEO meta, favicon, and skip link text from Sanity.
+ * @param {SiteSettings} settings
+ * @param {Strings} strings
+ */
+function updateHead(settings = {}, strings = {}) {
+  const seo = settings.seo || {};
+
+  // SEO meta
+  if (seo.title) {
+    document.title = seo.title;
+  }
+
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc && seo.description) {
+    metaDesc.setAttribute('content', seo.description);
+  }
+
+  // Favicon
+  if (seo.favicon) {
+    const href = imageUrlWithSize(seo.favicon, { width: 64, height: 64 });
+
+    let link = document.querySelector('link[rel="icon"]');
+    if (!link) {
+      link = document.createElement('link');
+      link.setAttribute('rel', 'icon');
+      link.setAttribute('type', 'image/png');
+      document.head.appendChild(link);
+    }
+    link.setAttribute('href', href);
+  }
+
+  // og:image
+  let ogImageMeta = document.querySelector('meta[property="og:image"]');
+  if (!ogImageMeta) {
+    ogImageMeta = document.createElement('meta');
+    ogImageMeta.setAttribute('property', 'og:image');
+    document.head.appendChild(ogImageMeta);
+  }
+  if (seo.ogImage) {
+    ogImageMeta.setAttribute('content', seo.ogImage);
+  }
+
+  // Skip link text
+  const skipLink = document.querySelector('.u-skip-link');
+  if (skipLink && strings.skipToContent) {
+    skipLink.textContent = strings.skipToContent;
+  }
+}
 
 /**
  * Render the header web component with site settings.
@@ -82,6 +132,7 @@ async function startApp() {
   try {
     const { settings, home, strings } = await client.fetch(HOME_QUERY);
 
+    updateHead(settings, strings);
     renderHeader(settings, strings);
     renderSections(home?.sections, strings);
     renderFooter(settings, home?.sections);

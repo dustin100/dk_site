@@ -6,7 +6,12 @@ export const HOME_QUERY = `
     nav[]{label, href},
     socials[]{label, href, style},
     contactEmail,
-    seo{title, description, "ogImage": ogImage.asset->url}
+    seo{
+      title,
+      description,
+      "ogImage": ogImage.asset->url,
+      "favicon": favicon.asset->url
+    }
   },
   "strings": *[_type=="strings"][0]{
     ...
