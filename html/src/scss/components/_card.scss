@@ -7,6 +7,7 @@
   box-shadow: $shadow;
   position: relative;
   overflow: hidden;
+  padding: $space-l;
 
   &--fx::after {
     content: '';
@@ -23,29 +24,9 @@
     mix-blend-mode: screen;
   }
 
-  &__body {
-    position: relative;
-  }
-  &__body--p-18 {
-    padding: $space-m;
-  }
-  &__body--p-22 {
-    padding: $space-l;
-  }
-  &__body--p-24 {
-    padding: $space-l;
-  }
-
   &__divider {
     height: 1px;
     margin: $space-l 0;
     background: linear-gradient(90deg, transparent, $line, transparent);
-  }
-
-  &__meta {
-    font-size: $font-size-s;
-    color: $muted;
-    line-height: $line-height-0;
-    letter-spacing: $letter-spacing-4;
   }
 }

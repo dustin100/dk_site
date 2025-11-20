@@ -162,7 +162,7 @@ customElements.define(
         <div class="grid">
           <div class="col-6">
             <article class="card card--fx">
-              <div class="card__body card__body--p-22">
+              <div>
                 <h2 class="about__title">${title ?? ''}</h2>
                 ${renderPortableText(body)}
               </div>
@@ -171,7 +171,7 @@ customElements.define(
 
           <div class="col-6">
             <article class="card card--fx">
-              <div class="card__body card__body--p-22">
+              <div>
                 ${subtitle ? `<h3 class="about__subtitle badge--mono h2">${subtitle}</h3>` : ''}
                 <ul class="card__list">
                   ${bullets.map((text) => `<li>${text}</li>`).join('')}
@@ -225,7 +225,7 @@ customElements.define(
         <section id="work" class="work">
           <h2 class="work__title">${title}</h2>
           <article class="card card--fx work__logos">
-            <div class="card__body card__body--p-24">
+            <div>
               ${strapline ? `<p class="work__strap">${strapline}</p>` : ''}
               <ul class="work__grid" aria-label="${workLogosLabel}">
                 ${grid}
@@ -252,7 +252,7 @@ customElements.define(
           </div>
           <div class="col-12">
             <article class="card card--fx">
-              <div class="card__body card__body--p-18">
+              <div>
                 ${intro ? `<p class="u-muted" style="margin-top:0">${intro}</p>` : ''}
                 <div class="tags">
                   ${tags.map((label) => `<span class="tags__item tags__item--mono">${label}</span>`).join('')}
@@ -280,7 +280,7 @@ customElements.define(
         <section id="stack" class="stack">
           <h2 class="stack__title">${title}</h2>
           <article class="card card--fx">
-            <div class="card__body card__body--p-22">
+            <div>
               <div class="stack__grid">
                 <div class="stack__summary">
                   ${renderPortableText(currentStack.summary)}
@@ -318,7 +318,7 @@ customElements.define(
       <section id="contact" class="contact">
         <div class="contact__panel">
           <article class="card card--fx">
-            <div class="card__body card__body--p-22">
+            <div>
               <h2 class="contact__title">${title}</h2>
               ${renderPortableText(body)}
               <div class="contact__cta">
