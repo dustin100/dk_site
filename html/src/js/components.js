@@ -351,9 +351,12 @@ customElements.define(
       this.innerHTML = `
         <footer class="site-footer">
           <div class="container site-footer__grid">
-            <div class="u-mono">
-              © ${year} ${title} ${builtWithText}
-            </div>
+            <p class="site-footer__built-with">
+              ${builtWithText}
+            </p>
+            <p class="site-footer__copyright">
+              © ${year} ${title}
+            </p>
           </div>
         </footer>
       `;
