@@ -1,0 +1,33 @@
+@use 'variables' as *;
+
+// Get breakpoint value by key
+@function bp($name) {
+  @if map-has-key($breakpoints, $name) {
+    @return map-get($breakpoints, $name);
+  }
+
+  @error 'Unknown breakpoint `#{$name}`. Allowed: #{map-keys($breakpoints)}';
+}
+
+// Media-query mixin: *either* from OR until
+// @include mq($from: l) { ... }   -> min-width: l
+// @include mq($until: m) { ... }  -> max-width: m
+@mixin mq($from: null, $until: null) {
+  @if $from != null and $until != null {
+    @error 'mq(): use either $from OR $until, not both.';
+  }
+
+  @if $from != null {
+    $min: bp($from);
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else if $until != null {
+    $max: bp($until);
+    @media (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}

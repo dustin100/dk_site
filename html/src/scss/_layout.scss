@@ -1,4 +1,5 @@
 @use './variables' as *;
+@use './mq' as *;
 
 .container {
   width: min(100% - 32px, $max-content-width);
@@ -18,16 +19,22 @@ section {
   gap: $space-m;
 }
 
-.col-12 {
+.col-12,
+.col-6,
+.col-4 {
   grid-column: span 12;
 }
-.col-6 {
-  grid-column: span 6;
-}
 
-@media (max-width: 900px) {
-  .col-6,
-  .col-4 {
+@include mq($from: m) {
+  .col-12 {
     grid-column: span 12;
+  }
+
+  .col-6 {
+    grid-column: span 6;
+  }
+
+  .col-4 {
+    grid-column: span 4;
   }
 }

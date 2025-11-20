@@ -1,16 +1,12 @@
 @use '../variables' as *;
+@use '../mq' as *;
 
 .hero {
   &__grid {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: $space-l;
+    grid-template-columns: 1fr;
+    gap: $space-m;
     align-items: center;
-
-    @media (max-width: 880px) {
-      grid-template-columns: 1fr;
-      gap: $space-m;
-    }
   }
 
   &__kicker {
@@ -42,12 +38,8 @@
   &__media {
     align-self: stretch;
     display: flex;
-    justify-content: flex-end;
-
-    @media (max-width: 880px) {
-      margin-top: $space-l;
-      justify-content: flex-start;
-    }
+    justify-content: flex-start;
+    margin-top: $space-l;
   }
 
   &__photo {
@@ -73,5 +65,17 @@
     object-position: top;
     border-radius: 23px;
     transform: translate3d(0, 0, 0);
+  }
+
+  @include mq($from: m) {
+    &__grid {
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: $space-l;
+    }
+
+    &__media {
+      margin-top: 0;
+      justify-content: flex-end;
+    }
   }
 }

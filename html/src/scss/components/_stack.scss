@@ -1,4 +1,5 @@
 @use '../variables' as *;
+@use '../mq' as *;
 
 .stack {
   &__title {
@@ -9,13 +10,9 @@
 
   &__grid {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-columns: 1fr;
     gap: $space-l;
     align-items: start;
-
-    @media (max-width: 880px) {
-      grid-template-columns: 1fr;
-    }
   }
 
   &__summary {
@@ -27,6 +24,7 @@
   &__list {
     margin: $space-xs 0 0;
     padding-left: $space-l;
+
     li {
       margin-bottom: $space-2xs;
     }
@@ -50,5 +48,11 @@
   &__hint {
     margin-top: $space-xs;
     font-size: $font-size-s;
+  }
+
+  @include mq($from: m) {
+    &__grid {
+      grid-template-columns: 1.2fr 0.8fr;
+    }
   }
 }

@@ -2,6 +2,20 @@
 $font-primary: 'Inter', Helvetica, Arial, sans-serif;
 $font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
+$breakpoint-xs: 0; // 0px
+$breakpoint-s: 36rem; // 576px
+$breakpoint-m: 48rem; // 768px
+$breakpoint-l: 64rem; // 1024px
+$breakpoint-xl: 85.375rem; // 1366px
+
+$breakpoints: (
+  xs: $breakpoint-xs,
+  s: $breakpoint-s,
+  m: $breakpoint-m,
+  l: $breakpoint-l,
+  xl: $breakpoint-xl,
+);
+
 // Font-size
 $font-size-2xs: 0.625rem; // 10px
 $font-size-xs: 0.75rem; // 12px

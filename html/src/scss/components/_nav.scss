@@ -1,4 +1,5 @@
 @use '../variables' as *;
+@use '../mq' as *;
 
 .nav {
   $parent: &;
@@ -8,9 +9,23 @@
   gap: $space-m;
 
   &__links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100svh;
+    width: min(86vw, 22rem);
+    transform: translateX(100%);
+    transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+    background: color-mix(in srgb, $primary 92%, transparent);
+    backdrop-filter: blur(10px) saturate(1.1);
+    border-left: 1px solid $line;
+    box-shadow: $shadow;
+    padding: $space-l;
     display: flex;
-    align-items: center;
-    gap: $space-l;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $space-m;
+    z-index: $layer-overlay;
   }
 
   &__link {
@@ -18,168 +33,142 @@
     padding: $space-xs $space-s;
     text-decoration: none;
     border-radius: 10px;
+    width: 100%;
   }
 
-  &__close {
-    display: none;
+  &__toggle {
+    position: absolute;
+    right: 0;
+    appearance: none;
+    border: none;
+    background: transparent;
+    color: $accent;
+    border-radius: 12px;
+    padding: $space-xs $space-s;
+    display: inline-flex;
+    align-items: center;
+    gap: $space-xs;
+    cursor: pointer;
+    line-height: 1;
   }
 
-  &__overlay {
-    display: none;
-  }
+  &__toggle-icon {
+    position: relative;
+    width: 24px;
+    height: 2px;
+    background: currentColor;
+    display: inline-block;
+    transition: transform 0.25s ease;
 
-  @media (max-width: 800px) {
-    &__toggle {
+    &::before,
+    &::after {
+      content: '';
       position: absolute;
-      right: 0;
-      appearance: none;
-      border: none;
-      background: transparent;
-      color: $text;
-      border-radius: 12px;
-      padding: $space-xs $space-s;
-      display: inline-flex;
-      align-items: center;
-      gap: $space-xs;
-      cursor: pointer;
-      line-height: 1;
-    }
-
-    &__toggle-icon {
-      position: relative;
+      left: 0;
       width: 24px;
       height: 2px;
       background: currentColor;
-      display: inline-block;
-      transition: transform 0.25s ease;
-
-      &::before,
-      &::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        width: 24px;
-        height: 2px;
-        background: currentColor;
-        transition:
-          transform 0.25s ease,
-          top 0.25s ease,
-          opacity 0.2s ease;
-      }
-
-      &::before {
-        top: -7px;
-      }
-      &::after {
-        top: 7px;
-      }
+      transition:
+        transform 0.25s ease,
+        top 0.25s ease,
+        opacity 0.2s ease;
     }
 
-    &__close {
-      position: absolute;
-      top: $space-m;
-      right: $space-m;
-      width: 40px;
-      height: 40px;
-      padding: 0;
-      border: 1px solid $line;
-      border-radius: 12px;
-      background: transparent;
-      color: $text;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: $layer-overlay + 1;
+    &::before {
+      top: -7px;
     }
 
-    &__close-icon {
-      position: relative;
-      width: 22px;
-      height: 2px;
-      background: transparent;
-      display: inline-block;
-
-      &::before,
-      &::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        height: 2px;
-        background: currentColor;
-        transform-origin: 50% 50%;
-      }
-      &::before {
-        transform: rotate(45deg);
-      }
-      &::after {
-        transform: rotate(-45deg);
-      }
-    }
-
-    &__links {
-      position: fixed;
-      top: 0;
-      right: 0;
-      height: 100svh;
-      width: min(86vw, 22rem);
-      transform: translateX(100%);
-      transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
-      background: color-mix(in srgb, $primary 92%, transparent);
-      backdrop-filter: blur(10px) saturate(1.1);
-      border-left: 1px solid $line;
-      box-shadow: $shadow;
-      padding: $space-l;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: $space-m;
-      z-index: $layer-overlay;
-    }
-
-    &__overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.4);
-      opacity: 0;
-      transition: opacity 0.2s ease;
-      pointer-events: none;
-      display: block;
-      z-index: $layer-heightened;
-    }
-
-    &--open {
-      #{$parent}__links {
-        transform: translateX(0);
-      }
-      #{$parent}__overlay {
-        opacity: 1;
-        pointer-events: auto;
-      }
-
-      #{$parent}__toggle-icon {
-        background: transparent;
-
-        &::before {
-          top: 0;
-          transform: rotate(45deg);
-        }
-        &::after {
-          top: 0;
-          transform: rotate(-45deg);
-        }
-      }
-    }
-
-    &__links,
-    &__link {
-      width: 100%;
-      text-decoration: none;
+    &::after {
+      top: 7px;
     }
   }
 
-  @media (min-width: 801px) {
+  &__close {
+    position: absolute;
+    top: $space-m;
+    right: $space-m;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid $line;
+    border-radius: 12px;
+    background: transparent;
+    color: $text;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: $layer-overlay + 1;
+  }
+
+  &__close-icon {
+    position: relative;
+    width: 22px;
+    height: 2px;
+    background: transparent;
+    display: inline-block;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      height: 2px;
+      background: currentColor;
+      transform-origin: 50% 50%;
+    }
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+
+  &__overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+    display: block;
+    z-index: $layer-heightened;
+  }
+
+  &--open {
+    #{$parent}__links {
+      transform: translateX(0);
+    }
+
+    #{$parent}__overlay {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #{$parent}__toggle-icon {
+      background: transparent;
+
+      &::before {
+        top: 0;
+        transform: rotate(45deg);
+      }
+
+      &::after {
+        top: 0;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
+  @include mq($from: m) {
     &__toggle {
+      display: none;
+    }
+
+    &__close {
       display: none;
     }
 
@@ -192,6 +181,17 @@
       border: 0;
       box-shadow: none;
       padding: 0;
+      flex-direction: row;
+      align-items: center;
+      gap: $space-l;
+    }
+
+    &__link {
+      width: auto;
+    }
+
+    &__overlay {
+      display: none;
     }
   }
 

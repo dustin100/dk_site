@@ -1,14 +1,12 @@
 @use '../variables' as *;
+@use '../mq' as *;
 
 .contact {
   &__panel {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: $space-m;
     align-items: start;
-    @media (max-width: 880px) {
-      grid-template-columns: 1fr;
-    }
   }
 
   &__title {
@@ -21,5 +19,11 @@
     display: flex;
     gap: $space-s;
     flex-wrap: wrap;
+  }
+
+  @include mq($from: m) {
+    &__panel {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 }
