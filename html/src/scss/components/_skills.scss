@@ -1,25 +1,33 @@
 @use '../variables' as *;
 
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: $space-xs;
+.skills {
+  &__title {
+    margin-bottom: $space-s;
+    line-height: $line-height-0;
+    letter-spacing: $letter-spacing-1;
+  }
 
-  &__item {
+  &__intro {
+    color: $muted;
+    margin-bottom: $space-s;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-xs;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__tag {
     font-size: $font-size-s;
     border: 1px solid $line;
     padding: $space-xs $space-s;
     border-radius: 999px;
     background: $secondary;
     line-height: $line-height-baseline;
-    letter-spacing: $letter-spacing-1;
-  }
-}
-
-.skills {
-  &__title {
-    margin-bottom: $space-s;
-    line-height: $line-height-0;
     letter-spacing: $letter-spacing-1;
   }
 }

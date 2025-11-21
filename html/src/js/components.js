@@ -244,25 +244,31 @@ customElements.define(
     render(skills = {}) {
       const { title = '', intro, tags = [] } = skills;
 
+      const tagsHtml = tags.map((label) => `<li class="skills__tag">${label}</li>`).join('');
+
       this.innerHTML = `
-      <section id="skills" class="skills">
-        <div class="grid">
-          <div class="col-12">
-            <h2 class="skills__title">${title}</h2>
+        <section id="skills" class="skills">
+          <div class="grid">
+            <div class="col-12">
+              <h2 class="skills__title">${title}</h2>
+            </div>
+            <div class="col-12">
+              <article class="card card--fx">
+                ${intro ? `<p class="skills__intro">${intro}</p>` : ''}
+                ${
+                  tags.length
+                    ? `
+                    <ul class="skills__tags">
+                      ${tagsHtml}
+                    </ul>
+                  `
+                    : ''
+                }
+              </article>
+            </div>
           </div>
-          <div class="col-12">
-            <article class="card card--fx">
-              <div>
-                ${intro ? `<p class="u-muted" style="margin-top:0">${intro}</p>` : ''}
-                <div class="tags">
-                  ${tags.map((label) => `<span class="tags__item tags__item--mono">${label}</span>`).join('')}
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-    `;
+        </section>
+      `;
     }
   }
 );
