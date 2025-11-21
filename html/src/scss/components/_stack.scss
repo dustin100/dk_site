@@ -30,6 +30,10 @@
     }
   }
 
+  &__try {
+    color: $muted;
+  }
+
   &__switcher {
     .stack__buttons {
       display: flex;

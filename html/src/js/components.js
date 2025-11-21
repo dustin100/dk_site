@@ -295,7 +295,7 @@ customElements.define(
                   </ul>
                 </div>
                 <div class="stack__switcher" role="group" aria-label="${stackSwitcherLabel}">
-                  <p class="u-muted">${tryStack}</p>
+                  <p class="stack__try">${tryStack}</p>
                   <div class="stack__buttons">
                     ${stacks
                       .map(
