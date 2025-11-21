@@ -1,4 +1,5 @@
 import { client } from './sanityClient.js';
+import '../scss/main.scss';
 import { HOME_QUERY } from './queries.js';
 import { sectionRegistry } from './registry.js';
 import { findStackSection, selectStackVariant, imageUrlWithSize } from './utils.js';

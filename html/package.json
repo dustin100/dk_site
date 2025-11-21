@@ -12,7 +12,7 @@
   "scripts": {
     "dev": "concurrently \"vite\" \"sass --watch src/scss/main.scss:src/css/main.css --style=compressed\"",
     "build:css": "sass src/scss/main.scss:src/css/main.css --style=compressed",
-    "build": "npm run build:css && vite build",
+    "build": "yarn build:css && vite build",
     "preview": "vite preview --open"
   }
 }
