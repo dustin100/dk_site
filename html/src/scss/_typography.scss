@@ -1,3 +1,4 @@
+@use 'sass:map';
 @use './variables' as *;
 
 /* -------------------------------------------------------
@@ -30,49 +31,49 @@ $heading-sizes: (
 
 h1 {
   @extend %heading-base;
-  font-size: map-get($heading-sizes, h1);
+  font-size: map.get($heading-sizes, h1);
 }
 h2 {
   @extend %heading-base;
-  font-size: map-get($heading-sizes, h2);
+  font-size: map.get($heading-sizes, h2);
 }
 h3 {
   @extend %heading-base;
-  font-size: map-get($heading-sizes, h3);
+  font-size: map.get($heading-sizes, h3);
 }
 h4 {
   @extend %heading-base;
-  font-size: map-get($heading-sizes, h4);
+  font-size: map.get($heading-sizes, h4);
 }
 h5 {
   @extend %heading-base;
-  font-size: map-get($heading-sizes, h5);
+  font-size: map.get($heading-sizes, h5);
 }
 
 /* Utility headings */
 .h0 {
   @extend %heading-base;
-  font-size: map-get($heading-sizes, h0);
+  font-size: map.get($heading-sizes, h0);
 }
 .h1 {
   @extend %heading-base;
-  font-size: map-get($heading-sizes, h1);
+  font-size: map.get($heading-sizes, h1);
 }
 .h2 {
   @extend %heading-base;
-  font-size: map-get($heading-sizes, h2);
+  font-size: map.get($heading-sizes, h2);
 }
 .h3 {
   @extend %heading-base;
-  font-size: map-get($heading-sizes, h3);
+  font-size: map.get($heading-sizes, h3);
 }
 .h4 {
   @extend %heading-base;
-  font-size: map-get($heading-sizes, h4);
+  font-size: map.get($heading-sizes, h4);
 }
 .h5 {
   @extend %heading-base;
-  font-size: map-get($heading-sizes, h5);
+  font-size: map.get($heading-sizes, h5);
 }
 
 .h--caps {
@@ -113,29 +114,29 @@ $body-sizes: (
 /* Element defaults */
 p {
   @extend %body-base;
-  font-size: map-get($body-sizes, body-m);
+  font-size: map.get($body-sizes, body-m);
 }
 li {
   @extend %body-base;
-  font-size: map-get($body-sizes, body-m);
+  font-size: map.get($body-sizes, body-m);
 }
 
 /* Utilities body */
 .body-l {
   @extend %body-base;
-  font-size: map-get($body-sizes, body-l);
+  font-size: map.get($body-sizes, body-l);
 }
 .body-m {
   @extend %body-base;
-  font-size: map-get($body-sizes, body-m);
+  font-size: map.get($body-sizes, body-m);
 }
 .body-s {
   @extend %body-base;
-  font-size: map-get($body-sizes, body-s);
+  font-size: map.get($body-sizes, body-s);
 }
 .body-xs {
   @extend %body-base;
-  font-size: map-get($body-sizes, body-xs);
+  font-size: map.get($body-sizes, body-xs);
 }
 
 /* Weight modifiers */

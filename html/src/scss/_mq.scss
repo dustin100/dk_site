@@ -1,12 +1,13 @@
+@use 'sass:map';
 @use 'variables' as *;
 
 // Get breakpoint value by key
 @function bp($name) {
-  @if map-has-key($breakpoints, $name) {
-    @return map-get($breakpoints, $name);
+  @if map.has-key($breakpoints, $name) {
+    @return map.get($breakpoints, $name);
   }
 
-  @error 'Unknown breakpoint `#{$name}`. Allowed: #{map-keys($breakpoints)}';
+  @error 'Unknown breakpoint `#{$name}`. Allowed: #{map.keys($breakpoints)}';
 }
 
 // Media-query mixin: *either* from OR until
