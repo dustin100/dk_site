@@ -33,10 +33,5 @@ export const siteSettings = defineType({
         {name: 'favicon', title: 'Favicon', type: 'image'},
       ],
     }),
-    defineField({
-      name: 'contactEmail',
-      type: 'string',
-      validation: (r) => r.email(),
-    }),
   ],
 })

@@ -318,28 +318,39 @@ customElements.define(
   'section-contact',
   class SectionContact extends SectionBase {
     render(contact = {}) {
-      const { title = '', body, ctas = [] } = contact;
+      const { title = '', body, ctas = [], emailAddress, emailLabel } = contact;
+
+      const emailHref = emailAddress ? `mailto:${emailAddress}` : '';
 
       this.innerHTML = `
-      <section id="contact" class="contact">
-        <div class="contact__panel">
-          <article class="card card--fx">
-            <div>
-              <h2 class="contact__title">${title}</h2>
-              ${renderPortableText(body)}
-              <div class="contact__cta">
-                ${ctas
-                  .map(
-                    ({ label, href, style }) =>
-                      `<a class="btn ${style === 'primary' ? 'btn--primary' : ''}" href="${href}" rel="noopener">${label}</a>`
-                  )
-                  .join('')}
+        <section id="contact" class="contact">
+          <div class="contact__panel">
+            <article class="card card--fx">
+              <div>
+                <h2 class="contact__title">${title}</h2>
+                ${renderPortableText(body)}
+                <div class="contact__cta">
+                  ${
+                    emailHref
+                      ? `<a class="btn" href="${emailHref}">
+                           ${emailLabel || 'Email me'}
+                         </a>`
+                      : ''
+                  }
+                  ${ctas
+                    .map(
+                      ({ label, href, style }) =>
+                        `<a class="btn ${
+                          style === 'primary' ? 'btn--primary' : ''
+                        }" href="${href}" rel="noopener" target="_blank">${label}</a>`
+                    )
+                    .join('')}
+                </div>
               </div>
-            </div>
-          </article>
-        </div>
-      </section>
-    `;
+            </article>
+          </div>
+        </section>
+      `;
     }
   }
 );

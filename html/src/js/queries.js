@@ -5,7 +5,6 @@ export const HOME_QUERY = `
     versionBadge,
     nav[]{label, href},
     socials[]{label, href, style},
-    contactEmail,
     seo{
       title,
       description,
@@ -70,6 +69,8 @@ export const HOME_QUERY = `
         _type,
         title,
         body,
+        emailAddress,
+        emailLabel,
         "ctas": ctas[]{label, href, style}
       }
     }
