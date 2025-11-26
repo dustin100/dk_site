@@ -8,9 +8,11 @@
 html,
 body {
   height: 100%;
-}
-html {
   scroll-behavior: smooth;
+}
+
+html {
+  overflow-x: hidden;
 }
 
 body {
@@ -23,6 +25,14 @@ body {
   text-rendering: optimizeLegibility;
   letter-spacing: $letter-spacing-1;
   overflow-x: hidden;
+  scroll-padding-top: $space-7xl;
+}
+
+html.nav-open,
+body.nav-open {
+  overflow-y: hidden;
+  touch-action: none;
+  overscroll-behavior: contain;
 }
 
 a {
