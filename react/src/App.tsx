@@ -1,12 +1,16 @@
 import './App.css'
+import { Header } from './components/Header';
+
+import { Button } from './components/ui/Button';
 
 function App() {
 
   return (
     <>
-      <div className='bg-primary'>
-        <div className="h1 text-white">Dustin Kelly</div>
-        </div>
+      <Header />
+      <Button variant="primary">Click Me</Button>
+
+
     </>
   )
 }

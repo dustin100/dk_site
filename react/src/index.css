@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+
 @theme {
   /* Fonts */
   --font-sans: "Inter", Helvetica, Arial, sans-serif;
@@ -69,7 +70,7 @@
 
   /* Helpers */
   --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.15);
-  --container-regular: 70rem;
+  --container-regular: min(100% - 2rem, 75rem);
 }
 
 /* 3) Base */
