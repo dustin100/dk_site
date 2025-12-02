@@ -1,3 +1,5 @@
+import type { SanityImageSource } from '@sanity/image-url';
+
 // Types for site settings and home page content
 export interface NavItem {
   label: string;
@@ -15,6 +17,10 @@ export interface Cta {
   href: string;
   style?: string;
 }
+
+export type SanityImage = SanityImageSource & {
+  alt?: string;
+};
 
 export interface Seo {
   title?: string;
@@ -40,10 +46,7 @@ export interface HeroSection {
   title?: string;
   subtitle?: string;
   ctas?: Cta[];
-  photo?: {
-    alt?: string;
-    src?: string;
-  };
+  photo?: SanityImage;
 }
 
 export interface AboutSection {

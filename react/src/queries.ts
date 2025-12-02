@@ -23,9 +23,11 @@ export const HOME_QUERY = `
         title,
         subtitle,
         "ctas": ctas[]{label, href, style},
-        photo {
+        photo{
           alt,
-          "src": asset->url
+          asset,
+          crop,
+          hotspot
         }
       },
       _type == "aboutSection" => {

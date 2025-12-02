@@ -446,6 +446,16 @@
     "@emnapi/runtime" "^1.5.0"
     "@tybys/wasm-util" "^0.10.1"
 
+"@noble/ed25519@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@noble/ed25519/-/ed25519-3.0.0.tgz#720d4cdb6b5f632e29164a7e9d5cdfeb82a7ac86"
+  integrity sha512-QyteqMNm0GLqfa5SoYbSC3+Pvykwpn95Zgth4MFVSMKBB75ELl9tX1LAVsN4c3HXOrakHsF2gL4zWDAYCcsnzg==
+
+"@noble/hashes@^2.0.0":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@noble/hashes/-/hashes-2.0.1.tgz#fc1a928061d1232b0a52bb754393c37a5216c89e"
+  integrity sha512-XlOlEbQcE9fmuXxrVTXCTlG2nlRXa9Rj3rr5Ue/+tX+nmkgbX720YHh0VR3hBF9xDvwnb8D2shVGOwNx+ulArw==
+
 "@portabletext/react@^5.0.0":
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/@portabletext/react/-/react-5.0.0.tgz#6971b6967d9934a22f5217f196791a44387e6978"
@@ -600,6 +610,21 @@
     "@types/eventsource" "1.1.15"
     event-source-polyfill "1.0.31"
     eventsource "2.0.2"
+
+"@sanity/image-url@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@sanity/image-url/-/image-url-2.0.0.tgz#4a4c1b0978d6677a094f0e126b5dc8e8a3b35e5a"
+  integrity sha512-ddZslfpLD1wz2HVwprkmTGQ7SjVFaNAOBOJdorfqWy2ajVO3Mx5P1xfZcwHdOkjv0Qsa1qdeMi+40cfVpIZBDw==
+  dependencies:
+    "@sanity/signed-urls" "^2.0.1"
+
+"@sanity/signed-urls@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@sanity/signed-urls/-/signed-urls-2.0.1.tgz#740deb971796ba517598fa6c183dcbe177dbf8c5"
+  integrity sha512-/u++FnDbaXDWHiHxG1Q4rbGsKRPf6lmTKsXeZ3bbbty/kNHDhVRUA5mRA+TtXlbPrse4ksv3a2vAerKNUNDZOw==
+  dependencies:
+    "@noble/ed25519" "^3.0.0"
+    "@noble/hashes" "^2.0.0"
 
 "@tailwindcss/node@4.1.17":
   version "4.1.17"

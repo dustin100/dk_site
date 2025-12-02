@@ -5,6 +5,7 @@ type ButtonVariant = 'default' | 'primary';
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   variant?: ButtonVariant;
+  href?: string;
 }
 
 export const Button: FC<ButtonProps> = ({
@@ -15,8 +16,8 @@ export const Button: FC<ButtonProps> = ({
 }) => {
   const base =
     'inline-flex items-center gap-xs px-s py-xs rounded-[12px] ' +
-    'border bg-secondary text-text no-underline ' +
-    'leading-[var(--leading-baseline)] ' +
+    'border-line border bg-secondary text-text no-underline ' +
+    'leading-0 ' +
     'transition duration-200 ease-out ' +
     'hover:-translate-y-[1px] ' +
     'hover:bg-accent hover:border-accent hover:text-primary ' +
@@ -25,7 +26,7 @@ export const Button: FC<ButtonProps> = ({
     'focus-visible:ring-offset-2 focus-visible:ring-offset-primary';
 
   const primary =
-    'border-accent shadow-card bg-accent text-primary hover:bg-accent';
+    'border shadow-card bg-accent text-primary hover:bg-accent';
 
   const variantClasses = variant === 'primary' ? primary : '';
 

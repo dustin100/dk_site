@@ -109,6 +109,10 @@
     overscroll-behavior: contain;
   }
 
+  section {
+    padding-block: clamp(26px, 8vw, 46px);
+  }
+
   a {
     @apply text-accent no-underline;
   }
