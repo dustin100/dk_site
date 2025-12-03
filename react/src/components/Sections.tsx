@@ -6,11 +6,13 @@ import type {
   WorkLogosGridSection,
   StringsDoc,
   AboutSection,
+  SkillsSection,
 } from '../types';
 import { useSanityData } from '../sanity/useSanityData';
 import { Hero } from './Hero';
 import { WorkLogosGrid } from './WorkLogosGrid';
 import { About } from './About';
+import { Skills } from './Skills';
 
 type SanityContextShape = {
   home?: HomePage | null;
@@ -45,8 +47,13 @@ const renderSection = (
           section={section as WorkLogosGridSection}
           strings={strings}
         />;
-    // case 'skillsSection':
-    //   return <Skills key={`skills-${index}`} section={section as SkillsSection} />;
+    case 'skillsSection':
+      return (
+        <Skills
+          key={`skills-${index}`}
+          section={section as SkillsSection}
+        />
+      );
     // case 'stackSection':
     //   return <Stack key={`stack-${index}`} section={section as StackSection} />;
     // case 'contactSection':
