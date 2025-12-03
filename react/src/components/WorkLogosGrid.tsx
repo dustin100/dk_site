@@ -1,4 +1,3 @@
-// src/components/WorkLogosGrid.tsx
 import type { FC } from 'react';
 import type { StringsDoc, WorkLogosGridSection as WorkSectionData } from '../types';
 
