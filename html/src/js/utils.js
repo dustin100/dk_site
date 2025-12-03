@@ -56,3 +56,5 @@ export function findStackSection(sections = []) {
   if (!Array.isArray(sections)) return null;
   return sections.find((s) => s._type === 'stackSection') || null;
 }
+
+// TODO: BUILD responsive image srcsets and sizes using sanity image URLs
