@@ -91,7 +91,7 @@ export interface StackSection {
 }
 
 export interface ContactSection {
-  _type: 'contactSection';
+  _type?: 'contactSection';
   title?: string;
   body?: unknown; // Portable Text
   emailAddress?: string;

@@ -8,6 +8,7 @@ import type {
   AboutSection,
   SkillsSection,
   StackSection,
+  ContactSection,
 } from '../types';
 import { useSanityData } from '../sanity/useSanityData';
 import { Hero } from './Hero';
@@ -15,10 +16,12 @@ import { WorkLogosGrid } from './WorkLogosGrid';
 import { About } from './About';
 import { Skills } from './Skills';
 import { Stack } from './Stack';
+import { Contact } from './Contact';
 
 type SanityContextShape = {
   home?: HomePage | null;
   strings?: StringsDoc | null;
+
 };
 
 const renderSection = (
@@ -64,8 +67,13 @@ const renderSection = (
           strings={strings}
         />
       );
-    // case 'contactSection':
-    //   return <Contact key={`contact-${index}`} section={section as ContactSection} strings={strings} />;
+    case 'contactSection':
+      return (
+        <Contact
+          key={`contact-${index}`}
+          section={section as ContactSection}
+        />
+      );
 
     default: {
       if (import.meta.env.DEV) {
