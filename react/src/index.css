@@ -241,3 +241,36 @@
     @apply font-semibold;
   }
 }
+
+@layer components {
+  .card {
+    @apply relative overflow-hidden bg-secondary border border-line rounded-2xl shadow-card p-l;
+  }
+
+  .card--fx::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      120deg,
+      transparent 0%,
+      rgba(91, 211, 255, 0.12) 40%,
+      transparent 60%
+    );
+    opacity: 0.4;
+    mix-blend-mode: screen;
+  }
+
+  .card__divider {
+    height: 1px;
+    margin-block: var(--spacing-l);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-line),
+      transparent
+    );
+  }
+}
+
