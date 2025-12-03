@@ -5,10 +5,12 @@ import type {
   HeroSection,
   WorkLogosGridSection,
   StringsDoc,
+  AboutSection,
 } from '../types';
 import { useSanityData } from '../sanity/useSanityData';
 import { Hero } from './Hero';
 import { WorkLogosGrid } from './WorkLogosGrid';
+import { About } from './About';
 
 type SanityContextShape = {
   home?: HomePage | null;
@@ -30,8 +32,13 @@ const renderSection = (
       );
 
     // TODO: Add other sections here
-    // case 'aboutSection':
-    //   return <About key={`about-${index}`} section={section as AboutSection} strings={strings} />;
+    case 'aboutSection':
+      return (
+        <About
+          key={`about-${index}`}
+          section={section as AboutSection}
+        />
+      );
     case 'workLogosGridSection':
       return <WorkLogosGrid
           key={`work-${index}`}

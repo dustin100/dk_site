@@ -272,5 +272,13 @@
       transparent
     );
   }
+
+  .card__list {
+    @apply list-disc list-outside m-0 pl-l;
+  }
+
+  .card__list li {
+    margin-bottom: var(--spacing-xs);
+  }
 }
 
