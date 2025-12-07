@@ -86,7 +86,7 @@ export interface StackSection {
     host?: string;
     summary?: string;
     list?: string[];
-    builtWith?: string[];
+    builtWith?: string;
   }[];
 }
 

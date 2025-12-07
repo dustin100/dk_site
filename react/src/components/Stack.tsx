@@ -12,9 +12,8 @@ export const Stack: FC<StackProps> = ({ section, strings }) => {
   const { title, tryStack, stacks = [] } = section;
   if (!stacks.length) return null;
 
-  // TODO: change this once I add copy to sanity
   const currentStack =
-    stacks.find((s) => s.host?.toLowerCase().includes('html')) ?? stacks[0];
+    stacks.find((s) => s.label?.toLowerCase().includes('react')) ?? stacks[0];
 
   const switcherLabel =
     strings?.stackSwitcherLabel ?? 'Stack demos';
