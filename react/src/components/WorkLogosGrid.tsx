@@ -15,8 +15,8 @@ export const WorkLogosGrid: FC<WorkLogosGridProps> = ({ section, strings }) => {
 
   return (
     <section id="work">
-      <div className="mx-auto max-w-regular">
-        {title && <h2 className="h2 mb-m">{title}</h2>}
+      <div>
+        {title && <h2 className="h2 mb-s">{title}</h2>}
 
         <div className="card card--fx">
           {strapline && (

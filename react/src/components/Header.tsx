@@ -41,7 +41,7 @@ export const Header: FC = () => {
 
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-primary backdrop-blur-md backdrop-saturate-150">
-      <div className="mx-auto flex max-w-regular items-center justify-between gap-m py-s">
+      <div className="container-regular flex items-center justify-between gap-m py-s">
         {/* Brand: badge + logo */}
         <Brand
           siteName={settings?.siteName}

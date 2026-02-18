@@ -19,7 +19,7 @@ export const Footer: FC = () => {
 
   return (
     <footer className="py-l">
-      <div className="mx-auto max-w-regular grid grid-cols-1 gap-2xs">
+      <div className="grid grid-cols-1 gap-2xs">
         {builtWithText && (
           <p className="text-muted text-base leading-0 tracking-1 m-0">
             {builtWithText}

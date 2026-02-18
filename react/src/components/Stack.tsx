@@ -20,7 +20,7 @@ export const Stack: FC<StackProps> = ({ section, strings }) => {
 
   return (
     <section id="stack">
-      <div className="mx-auto max-w-regular">
+      <div>
         {title && <h2 className="h2 mb-s">{title}</h2>}
 
         <div className="card card--fx mt-m">

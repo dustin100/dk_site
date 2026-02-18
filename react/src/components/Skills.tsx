@@ -11,7 +11,7 @@ export const Skills: FC<SkillsProps> = ({ section }) => {
 
   return (
     <section id="skills">
-      <div className="mx-auto max-w-regular">
+      <div>
         {title && (
           <h2 className="h2 mb-s">
             {title}

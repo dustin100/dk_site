@@ -70,10 +70,9 @@
 
   /* Helpers */
   --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.15);
-  --container-regular: min(100% - 2rem, 75rem);
+  --container-regular: min(100% - 32px, 70rem);
 }
 
-/* 3) Base */
 @layer base {
   *,
   *::before,
@@ -164,7 +163,6 @@
   }
 }
 
-/* 4) Headings */
 @layer base {
   h1,
   .h1 {
@@ -241,6 +239,15 @@
     @apply font-semibold;
   }
 }
+
+@layer utilities {
+  .container-regular {
+    width: var(--container-regular);
+    margin-inline: auto;
+  }
+}
+
+
 
 @layer components {
   .card {

@@ -1,4 +1,3 @@
-// src/components/Hero.tsx
 import type { FC } from 'react';
 import type { HeroSection as HeroSectionData } from '../types';
 import { ResponsiveImage } from './ResponsiveImage';
@@ -14,7 +13,7 @@ export const Hero: FC<HeroProps> = ({ hero }) => {
 
   return (
     <section id="hero">
-      <div className="mx-auto max-w-regular">
+      <div>
         <div className="grid grid-cols-1 items-center gap-m md:grid-cols-[1.2fr_0.8fr] md:gap-l">
           {/* Intro */}
           <div>

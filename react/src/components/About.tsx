@@ -12,7 +12,7 @@ export const About: FC<AboutProps> = ({ section }) => {
 
   return (
     <section id="about">
-      <div className="mx-auto max-w-regular">
+      <div>
         <div className="grid grid-cols-1 gap-m md:grid-cols-2 md:gap-l">
           {/* Left card: main copy */}
           <div>

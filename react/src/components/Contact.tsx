@@ -16,7 +16,7 @@ export const Contact: FC<ContactProps> = ({ section }) => {
 
   return (
     <section id="contact">
-      <div className="mx-auto max-w-regular">
+      <div>
         <div className="grid grid-cols-1 gap-m items-start md:grid-cols-2">
           <div className="card card--fx">
             {title && <h2 className="h2 mb-m">{title}</h2>}
