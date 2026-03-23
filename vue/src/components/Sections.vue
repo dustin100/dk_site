@@ -7,7 +7,6 @@
       :section="(section as WorkLogosGridSection)"
       :strings="strings"
     />
-    <!-- Skills, Stack, Contact — coming soon -->
   </template>
 </template>
 
