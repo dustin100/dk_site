@@ -12,24 +12,16 @@ export const Skills: FC<SkillsProps> = ({ section }) => {
   return (
     <section id="skills">
       <div>
-        {title && (
-          <h2 className="h2 mb-s">
-            {title}
-          </h2>
-        )}
+        {title && <h2 className="h2 mb-s">{title}</h2>}
 
         <div className="card card--fx mt-m">
-          {intro && (
-            <p className="text-muted mb-s">
-              {intro}
-            </p>
-          )}
+          {intro && <p className="text-muted mb-l">{intro}</p>}
 
           {hasTags && (
-            <ul className="flex flex-wrap gap-xs m-0 p-0 list-none">
+            <ul className="flex flex-wrap gap-s m-0 p-0 list-none">
               {tags.map((label) => (
                 <li key={label} className="m-0">
-                  <span className="inline-flex items-center border border-line rounded-full px-s py-2xs bg-secondary text-sm leading-baseline tracking-1">
+                  <span className="inline-flex items-center border border-line rounded-full px-m py-xs bg-secondary text-sm leading-baseline tracking-1">
                     {label}
                   </span>
                 </li>
