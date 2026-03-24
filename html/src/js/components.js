@@ -1,4 +1,5 @@
 import { renderPortableText, imageUrlWithSize, selectStackVariant } from './utils.js';
+import { buildSrcSet } from './sanityImage.js';
 
 class SectionBase extends HTMLElement {
   _data;
@@ -102,10 +103,7 @@ customElements.define(
     render(hero = {}) {
       const { kicker, title, subtitle, ctas = [], photo } = hero;
 
-      const hasPhoto = !!photo.src;
-      const w = 1700;
-      const h = 1125;
-      const photoUrl = hasPhoto ? imageUrlWithSize(photo.src, { width: w, height: h }) : '';
+      const { src: photoSrc, srcset: photoSrcset } = buildSrcSet(photo);
       const photoAlt = photo?.alt || '';
 
       this.innerHTML = `
@@ -125,17 +123,19 @@ customElements.define(
               </div>
             </div>
 
-            <div class="hero__media"${photoUrl ? '' : ' aria-hidden="true"'}>
+            <div class="hero__media"${photoSrc ? '' : ' aria-hidden="true"'}>
               ${
-                photoUrl
+                photoSrc
                   ? `
                 <figure class="hero__photo">
                   <img
                     class="hero__photo-img"
-                    src="${photoUrl}"
+                    src="${photoSrc}"
+                    srcset="${photoSrcset}"
+                    sizes="(min-width: 1024px) 33vw, 100vw"
                     alt="${photoAlt}"
-                    width="${w}"
-                    height="${h}"
+                    width="1700"
+                    height="1125"
                     loading="eager"
                     decoding="async"
                   />
