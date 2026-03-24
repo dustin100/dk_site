@@ -9,6 +9,10 @@
 
   <div v-else>
     <Header />
+    <main>
+      <Sections />
+    </main>
+    <Footer />
   </div>
 </template>
 
@@ -18,6 +22,8 @@ import { client } from './sanityClient'
 import { HOME_QUERY } from './queries'
 import { SANITY_DATA_KEY } from './composables/useSanityData'
 import Header from './components/Header.vue'
+import Sections from './components/Sections.vue'
+import Footer from './components/Footer.vue'
 
 const data = ref(null)
 const isLoading = ref(true)
