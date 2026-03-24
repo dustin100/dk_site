@@ -1,19 +1,26 @@
 <template>
   <template v-for="(section, index) in sections" :key="`${section._type}-${index}`">
+
     <Hero v-if="section._type === 'heroSection'" :section="(section as HeroSection)" />
+
     <About v-else-if="section._type === 'aboutSection'" :section="(section as AboutSection)" />
+
     <WorkLogosGrid
       v-else-if="section._type === 'workLogosGridSection'"
       :section="(section as WorkLogosGridSection)"
       :strings="strings"
     />
+
     <Skills v-else-if="section._type === 'skillsSection'" :section="(section as SkillsSection)" />
+
     <Stack
       v-else-if="section._type === 'stackSection'"
       :section="(section as StackSection)"
       :strings="strings"
     />
+
     <Contact v-else-if="section._type === 'contactSection'" :section="(section as ContactSection)" />
+
   </template>
 </template>
 
