@@ -13,11 +13,11 @@ export const About: FC<AboutProps> = ({ section }) => {
   return (
     <section id="about">
       <div>
-        <div className="grid grid-cols-1 gap-m md:grid-cols-2 md:gap-l">
+        <div className="grid grid-cols-1 gap-m md:grid-cols-2 md:gap-m">
           {/* Left card: main copy */}
           <div>
             <div className="card card--fx">
-              {title && <h2 className="h2 mb-m">{title}</h2>}
+              {title && <h2 className="h2 mb-s">{title}</h2>}
 
               <SanityPortableText value={body} />
             </div>
@@ -27,7 +27,7 @@ export const About: FC<AboutProps> = ({ section }) => {
           <div>
             <div className="card card--fx">
               {subtitle && (
-                <h3 className="h2 badge--mono mb-m">
+                <h3 className="h2 badge--mono mb-s">
                   {subtitle}
                 </h3>
               )}
