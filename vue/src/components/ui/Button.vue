@@ -1,8 +1,8 @@
 <template>
-  <a v-if="href" :href="href" :class="classes">
+  <a v-if="href && !disabled" :href="href" :class="classes">
     <slot />
   </a>
-  <button v-else type="button" :class="classes">
+  <button v-else type="button" :disabled="disabled" :class="classes">
     <slot />
   </button>
 </template>
@@ -14,9 +14,11 @@ const props = withDefaults(
   defineProps<{
     href?: string
     variant?: 'default' | 'primary'
+    disabled?: boolean
   }>(),
   {
     variant: 'default',
+    disabled: false,
   }
 )
 
@@ -32,8 +34,11 @@ const base =
   'focus-visible:ring-offset-2 focus-visible:ring-offset-primary'
 
 const primary = 'border shadow-card bg-accent text-primary hover:bg-accent'
+const disabledClasses = 'opacity-40 pointer-events-none'
 
 const classes = computed(() =>
-  [base, props.variant === 'primary' ? primary : ''].filter(Boolean).join(' ')
+  [base, props.variant === 'primary' ? primary : '', props.disabled ? disabledClasses : '']
+    .filter(Boolean)
+    .join(' ')
 )
 </script>
