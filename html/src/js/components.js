@@ -298,10 +298,12 @@ customElements.define(
                   <p class="stack__try">${tryStack}</p>
                   <div class="stack__buttons">
                     ${stacks
-                      .map(
-                        ({ label, host }) =>
-                          `<a class="btn stack__btn" data-target-host="${host}" href="https://${host}">${label}</a>`
-                      )
+                      .map(({ label, host }) => {
+                        const isCurrent = host === currentStack.host;
+                        return isCurrent
+                          ? `<a class="btn stack__btn" aria-disabled="true" href="https://${host}" target="_self">${label}</a>`
+                          : `<a class="btn stack__btn" href="https://${host}" target="_blank" rel="noopener">${label}</a>`;
+                      })
                       .join('')}
                   </div>
                 </div>
