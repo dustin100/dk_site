@@ -120,6 +120,15 @@
     @apply underline;
   }
 
+  ul {
+    padding-left: var(--spacing-m);
+  }
+
+  ul > li::marker {
+    color: var(--color-accent);
+    font-size: var(--text-xl);
+  }
+
   img,
   picture {
     display: block;
@@ -281,11 +290,8 @@
   }
 
   .card__list {
-    @apply list-disc list-outside m-0 pl-l;
+    @apply list-disc list-outside m-0;
   }
 
-  .card__list li {
-    margin-bottom: var(--spacing-xs);
-  }
 }
 

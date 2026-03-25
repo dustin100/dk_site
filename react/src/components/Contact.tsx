@@ -19,7 +19,7 @@ export const Contact: FC<ContactProps> = ({ section }) => {
       <div>
         <div className="grid grid-cols-1 gap-m items-start md:grid-cols-2">
           <div className="card card--fx">
-            {title && <h2 className="h2 mb-m">{title}</h2>}
+            {title && <h2 className="h2 mb-s leading-0">{title}</h2>}
 
             <SanityPortableText value={body} />
 

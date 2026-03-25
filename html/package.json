@@ -16,6 +16,7 @@
     "preview": "vite preview --open"
   },
   "dependencies": {
-    "@sanity/client": "^7.13.0"
+    "@sanity/client": "^7.13.0",
+    "@sanity/image-url": "^2.0.3"
   }
 }

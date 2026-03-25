@@ -1,11 +1,11 @@
 <template>
   <section id="about">
     <div class="container-regular">
-      <div class="grid grid-cols-1 gap-m md:grid-cols-2 md:gap-l">
+      <div class="grid grid-cols-1 gap-m md:grid-cols-2 md:gap-m">
         <!-- Left card: main copy -->
         <div>
           <div class="card card--fx">
-            <h2 v-if="section.title" class="h2 mb-m">{{ section.title }}</h2>
+            <h2 v-if="section.title" class="h2 mb-s">{{ section.title }}</h2>
             <PortableText :value="section.body" />
           </div>
         </div>
@@ -13,7 +13,7 @@
         <!-- Right card: subtitle + bullets -->
         <div>
           <div class="card card--fx">
-            <h3 v-if="section.subtitle" class="h2 badge--mono mb-m">
+            <h3 v-if="section.subtitle" class="h2 badge--mono mb-s">
               {{ section.subtitle }}
             </h3>
 

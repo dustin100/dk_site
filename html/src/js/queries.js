@@ -25,7 +25,9 @@ export const HOME_QUERY = `
         "ctas": ctas[]{label, href, style},
         photo {
           alt,
-          "src": asset->url
+          asset,
+          crop,
+          hotspot
         }
       }
       ,
