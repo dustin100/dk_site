@@ -3,7 +3,7 @@
     <div class="container-regular">
       <div class="grid grid-cols-1 gap-m items-start md:grid-cols-2">
         <div class="card card--fx">
-          <h2 v-if="section.title" class="h2 mb-m">{{ section.title }}</h2>
+          <h2 v-if="section.title" class="h2 mb-s leading-0">{{ section.title }}</h2>
 
           <PortableText :value="section.body" />
 
