@@ -302,7 +302,7 @@ customElements.define(
                         const isCurrent = host === currentStack.host;
                         return isCurrent
                           ? `<a class="btn stack__btn" aria-disabled="true" href="https://${host}" target="_self">${label}</a>`
-                          : `<a class="btn stack__btn" href="https://${host}" target="_blank" rel="noopener">${label}</a>`;
+                          : `<a class="btn stack__btn" href="https://${host}" target="_self" rel="noopener">${label}</a>`;
                       })
                       .join('')}
                   </div>

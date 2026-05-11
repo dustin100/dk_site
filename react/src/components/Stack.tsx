@@ -60,7 +60,7 @@ export const Stack: FC<StackProps> = ({ section, strings }) => {
                       key={`${host}-${index}`}
                       href={`https://${host}`}
                       variant="default"
-                      target="_blank"
+                      target="_self"
                       rel="noopener noreferrer"
                     >
                       {label}

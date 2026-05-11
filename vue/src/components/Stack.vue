@@ -28,7 +28,7 @@
                 <Button
                   v-if="stack.host && stack.label"
                   :href="`https://${stack.host}`"
-                  target="_blank"
+                  target="_self"
                   rel="noopener noreferrer"
                 >
                   {{ stack.label }}
